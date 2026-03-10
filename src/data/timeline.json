@@ -1,0 +1,91 @@
+[
+    {
+        "type": "experience",
+        "title": "Intermediate Developer",
+        "subtitle": "AvoChoc",
+        "year": "2025 - Present",
+        "icon": "heroicons:trophy",
+        "homepage": true,
+        "shortDescription": "Leading development of new and existing applications.",
+        "items": [
+            "Team lead on a fleet fuel loyalty program website for fleet management, oversight, and fuel rebates.",
+            "Lead developer on the rebuild of the CSIR (Council for Scientific and Industrial Research) website.",
+            "Head of Maintenance projects including a Maths Tutoring application and a learner reading platform featuring an admin portal and a Unity game for mobile and desktop.",
+            "Performed an infrastructure analysis and implemented a backup solution for a fuel tanker tracking system.",
+            "Led an internal project to implement tools for Password and API management"
+        ]
+    },
+    {
+        "type": "award",
+        "title": "AvoChoc Customer Satisfaction",
+        "year": "2025",
+        "icon": "heroicons:presentation-chart-bar",
+        "homepage": true
+    },
+    {
+        "type": "education",
+        "title": "Certifications",
+        "subtitle": "Cybrary",
+        "year": "2024",
+        "icon": "heroicons:clipboard-document-list-20-solid",
+        "items": [
+            "Microsoft Azure Fundamentals",
+            "Amazon AWS Cloud Practitioner"
+        ]
+    },
+    {
+        "type": "education",
+        "title": "Bachelor of Science in Informatics",
+        "subtitle": "University of South Africa",
+        "year": "2019 - 2023",
+        "icon": "heroicons:academic-cap-20-solid",
+        "items": [
+            "Programming Coursework: Intro. to Programming, Visual Programming, Human-Computer Interaction, Databases, Advanced Systems Development, Software Project Management, Structured Systems Analysis",
+            "Management Coursework: General Management, Business Management, Small & Global Business Management, Strategic Planning, Implementation, & Control, Financial Accounting, Statistics"
+        ]
+    },
+    {
+        "type": "award",
+        "title": "MTN App of the Year",
+        "year": "2018",
+        "icon": "heroicons:trophy",
+        "homepage": true
+    },
+    {
+        "type": "experience",
+        "title": "Senior Web Developer & Platforms Manager",
+        "subtitle": "ACGL",
+        "year": "2016 - 2024",
+        "icon": "heroicons:briefcase-solid",
+        "homepage": true,
+        "shortDescription": "Designed and developed 6 websites and 3 apps, attracting over 150k registered users with 1m+ annual visits.",
+        "items": [
+            "Designed and developed 6 websites and 3 apps, attracting over 150k registered users with 1m+ visits annually",
+            "Engineered a tournament management system incorporating complex logic, gamification, loyalty points, API integrations, wallets, live chat, and more. Currently oversees 5k+ tournaments, 100k+ matches, and 40k+ teams",
+            "Set up and managed 5 VPS instances and 2 bare-metal servers with 99% uptime since 2022",
+            "Directed projects involving Graphics, Video, Social and Competition teams that featured collaborations with brands such as Acer, BMW, Burger King, MTN, Radisson, Red Bull, and Xiaomi. Involved in over 100 projects",
+            "Led a support team that responded to website and tournament support tickets"
+        ]
+    },
+    {
+        "type": "experience",
+        "title": "ICT Teacher",
+        "subtitle": "Dr. Viljoen Primary School & Piet Retief Primary School",
+        "year": "2016 - 2018",
+        "icon": "heroicons:briefcase-solid",
+        "homepage": true,
+        "shortDescription": "Oversight of school infrastructure & Taught ICT classes for students in Grade R through to Grade 7.",
+        "items": [
+            "Overhauled the school network of 60+ devices, modernized 30+ PCs with the latest OS and office software, built 10+ new PCs, and installed 5 WIFI access points across school grounds",
+            "Taught ICT classes for students in Grade R through to Grade 7, with a total of over 1500 students over 3 years",
+            "Covered fundamental computer skills and literacy, incorporating gamification techniques into the curriculum",
+            "Led weekend classes for the Eastern Cape Open Learning Group that allowed teachers without any ICT training to get certified (2017-2018)"
+        ]
+    },
+    {
+        "type": "award",
+        "title": "FNB Leadership Award",
+        "year": "2010",
+        "icon": "heroicons:trophy"
+    }
+]

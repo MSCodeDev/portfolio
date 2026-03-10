@@ -1,0 +1,87 @@
+---
+import { Icon } from "astro-icon/components";
+import info from "@/data/info.json";
+---
+
+<footer class="w-full py-12">
+  <div class="max-w-5xl mx-auto">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-10">
+      <div class="flex flex-col items-center space-y-3 gap-3 justify-center">
+        <div class="flex space-x-6 sm:space-x-8">
+          {
+            info.socials.map((link) => (
+              <a
+                href={link.href}
+                target="_blank"
+                class="flex flex-col items-center group"
+                aria-label={link.label}
+              >
+                <div class="text-[var(--white-icon)] hover:text-[var(--white)] transition duration-300 ease-in-out">
+                  <Icon name={link.icon} class={`${link.icon.startsWith('simple-icons:') ? 'w-7 h-7' : 'w-8 h-8'}`} />
+                </div>
+              </a>
+            ))
+          }
+        </div>
+        <div>
+      <p class="text-center text-sm text-[var(--white-icon)] space-y-2">
+        <!-- If you are using this template, by MIT License you can't remove the copyright notice -->
+        <span class="block sm:inline"
+          >Copyright &copy; <a href={info.copyright.url}
+            >{info.copyright.holder}</a
+          >. All rights reserved.</span
+        >
+      </p>
+    </div>
+      </div>
+
+      <div class="flex flex-col items-center space-y-6">
+        <div class="grid grid-cols-1 gap-3 w-full max-w-xs py-6">
+          {
+            [
+              {
+                desc: "Built with",
+                name: "Astro",
+                icon: "simple-icons:astro",
+              },
+              {
+                desc: "Styled with",
+                name: "TailwindCSS",
+                icon: "simple-icons:tailwindcss",
+              },
+              {
+                desc: "Deployed on",
+                name: "GitHub",
+                icon: "simple-icons:github",
+              },
+            ].map((tech) => (
+              <div class="flex items-center justify-center space-x-3">
+                <span class="text-[var(--white-icon)] text-sm">
+                  {tech.desc}
+                </span>
+                <Icon
+                  name={tech.icon}
+                  class="h-5 w-5 text-[var(--white-icon)] opacity-50"
+                />
+                <span class="text-[var(--white-icon)] text-sm">
+                  {tech.name}
+                </span>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+
+      <div class="flex flex-col justify-center items-center lg:items-start space-y-6">
+        <div class="w-full max-w-xs">
+          <img
+            src="/logo.png"
+            alt="Logo"
+            class="w-auto h-[100px] mx-auto"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,116 @@
+{
+    "services": [
+        {
+            "title": "Web Development",
+            "icon": "heroicons:computer-desktop-20-solid",
+            "items": [
+                "Single Page Applications & CMS",
+                "Progressive Web Apps",
+                "Full-stack, Microservices & Monoliths"
+            ]
+        },
+        {
+            "title": "Web Design",
+            "icon": "heroicons:paint-brush-20-solid",
+            "items": [
+                "Fully Responsive designs",
+                "UI design with Figma & Canva",
+                "UX research & improvements"
+            ]
+        },
+        {
+            "title": "TechOps",
+            "icon": "heroicons:server-stack",
+            "items": [
+                "Cloud & Dedicated server management",
+                "Serverless & Dedicated server deployment",
+                "CI/CD pipelines & Infrastructure as Code"
+            ]
+        }
+    ],
+    "stacks": [
+        {
+            "title": "Languages",
+            "icon": "heroicons:code-bracket-square-20-solid",
+            "items": [
+                "PHP",
+                "JavaScript",
+                "TypeScript",
+                "CSS & HTML",
+                "SQL",
+                "Python",
+                "C++",
+                "Swift",
+                "Kotlin"
+            ]
+        },
+        {
+            "title": "Frontend",
+            "icon": "heroicons:squares-2x2-20-solid",
+            "items": [
+                "React",
+                "Angular",
+                "Next.js",
+                "Astro",
+                "Vite",
+                "jQuery",
+                "Tailwind CSS",
+                "Bootstrap"
+            ]
+        },
+        {
+            "title": "Backend",
+            "icon": "heroicons:server-20-solid",
+            "items": [
+                "Laravel",
+                "Symfony",
+                "NestJS",
+                "FastAPI",
+                "WordPress",
+                "Drupal",
+                "Composer"
+            ]
+        },
+        {
+            "title": "Databases",
+            "icon": "heroicons:circle-stack-20-solid",
+            "items": [
+                "MySQL",
+                "PostgreSQL",
+                "MariaDB",
+                "SQLite3"
+            ]
+        },
+        {
+            "title": "DevOps & Cloud",
+            "icon": "heroicons:cog-6-tooth-20-solid",
+            "items": [
+                "AWS",
+                "Azure",
+                "Docker",
+                "Ansible",
+                "GitHub Actions",
+                "Azure Pipelines",
+                "AWS CodeBuild"
+            ]
+        },
+        {
+            "title": "Tools & Other",
+            "icon": "heroicons:wrench-screwdriver-20-solid",
+            "items": [
+                "Git",
+                "GitHub",
+                "GitLab",
+                "OAuth",
+                "Entra",
+                "SAML",
+                "PHPUnit",
+                "Power BI",
+                "Google Analytics",
+                "ElevenLabs",
+                "Whisper",
+                "VS Code"
+            ]
+        }
+    ]
+}

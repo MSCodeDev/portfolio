@@ -1,0 +1,147 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Nav from "@/components/nav.astro";
+import Footer from "@/components/footer.astro";
+import { Icon } from "astro-icon/components";
+import timeline from "@/data/timeline.json";
+import { stacks as skills } from "@/data/skills.json";
+
+const badgeColors = {
+  award: "bg-amber-400/15 text-amber-400",
+  education: "bg-blue-400/15 text-blue-400",
+};
+---
+
+<Layout title="Resume - Mitch Stroebel">
+  <Nav />
+  
+  <main class="max-w-5xl mx-auto py-32 space-y-16">
+  <div class="mb-12 flex flex-col md:flex-row md:items-start md:justify-between gap-6">
+      <div>
+        <h1 class="text-5xl md:text-6xl font-bold text-[var(--white)] mb-4">
+          Resume
+        </h1>
+        <p class="text-xl text-[var(--white-icon)]">
+          My work experience, skills, education & awards.
+        </p>
+      </div>
+      <a 
+        href="/resume.pdf"
+        target="_blank"
+        class="inline-block px-6 py-3 bg-[var(--sec)] text-[var(--background)] rounded-lg font-semibold hover:opacity-90 transition-opacity whitespace-nowrap self-start"
+      >
+        Download PDF Resume
+      </a>
+    </div>
+    <!-- Combined Timeline Section -->
+    <section id="timeline">
+      
+      <div class="timeline-line relative pl-10 ml-3">
+        {timeline.map((item, i) => (
+          <div class={`relative ${i < timeline.length - 1 ? 'mb-8' : ''}`}>
+            <div class={`absolute -left-[3.1rem] top-4 w-5 h-5 flex items-center justify-center ${item.type === 'award' ? 'text-amber-400' : 'text-[var(--sec)]'}`}>
+              <Icon name={item.icon} class="w-5 h-5" />
+            </div>
+            <div class="tilt-card bg-[#1414149c] border border-[var(--white-icon-tr)] rounded-xl p-5">
+              <div class="flex items-center justify-between gap-2 flex-wrap mb-1">
+                {item.type !== 'experience' ? (
+                  <div class="flex items-center gap-2 flex-wrap">
+                    <h3 class="text-2xl font-semibold text-[var(--white)]">{item.title}</h3>
+                    <span class={`text-[0.65rem] px-1.5 py-0.5 rounded uppercase tracking-wider ${badgeColors[item.type]}`}>
+                      {item.type === 'award' ? 'Award' : 'Education'}
+                    </span>
+                  </div>
+                ) : (
+                  <h3 class="text-2xl md:text-3xl font-semibold text-[var(--white)]">{item.title}</h3>
+                )}
+                <span class="text-sm text-[var(--white-icon)] shrink-0">{item.year}</span>
+              </div>
+              <p class={`text-lg mb-${item.type === 'award' ? '2' : '4'} ${item.type === 'award' ? 'text-amber-400' : 'text-[var(--sec)]'}`}>
+                {item.subtitle}
+              </p>
+
+              {item.items && (
+                <ul class="list-disc list-inside space-y-2 text-[var(--white-icon)] text-sm md:text-base">
+                  {item.items.map((li) => <li>{li}</li>)}
+                </ul>
+              )}
+
+              {item.description && (
+                <p class="text-[var(--white-icon)] text-sm md:text-base">{item.description}</p>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+      <h2 class="text-4xl font-bold text-[var(--white)] mb-8 pb-4">
+        Skills & Stacks
+      </h2>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {skills.map((category) => (
+          <div class="tilt-card skill-card bg-[#1414149c] border border-[var(--white-icon-tr)] rounded-xl p-6">
+            <div class="flex items-center gap-3 mb-5">
+              <div class="skill-icon-box">
+                <Icon name={category.icon} class="w-5 h-5 text-[var(--sec)]" />
+              </div>
+              <h3 class="text-xl font-semibold text-[var(--white)]">{category.title}</h3>
+            </div>
+            <div class="flex flex-wrap gap-2">
+              {category.items.map((item) => (
+                <span class="skill-chip">{item}</span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .timeline-line::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(
+      to bottom,
+      transparent,
+      var(--white-icon-tr) 15%,
+      var(--white-icon-tr) 85%,
+      transparent
+    );
+  }
+
+  .skill-chip {
+    display: inline-block;
+    padding: 0.375rem 0.875rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--white-icon);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--white-icon-tr);
+    border-radius: 9999px;
+  }
+
+  .skill-icon-box {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 0.5rem;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--white-icon-tr);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+</style>

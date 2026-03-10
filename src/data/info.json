@@ -1,0 +1,47 @@
+{
+    "name": "Mitch Stroebel",
+    "firstName": "Mitch",
+    "lastName": "Stroebel",
+    "greeting": "Hi there! I am",
+    "role": "full-stack developer",
+    "bio": "Leveraging a decade of experience as a {role}, I excel at crafting web applications, and I am dedicated to enhancing website performance, engagement, and reliability.",
+    "meta": {
+        "title": "Mitch Stroebel",
+        "description": "Software Developer",
+        "ogSiteName": "MSCode",
+        "ogImage": "/meta.png"
+    },
+    "copyright": {
+        "holder": "MSCode",
+        "url": "https://github.com/MSCodeDev"
+    },
+    "socials": [
+        {
+            "label": "GitHub",
+            "href": "https://github.com/MSCodeDev",
+            "icon": "simple-icons:github"
+        },
+        {
+            "label": "LinkedIn",
+            "href": "https://linkedin.com/in/mitchstroebel",
+            "icon": "simple-icons:linkedin"
+        },
+        {
+            "label": "Email",
+            "href": "mailto:mitch@mscode.co.za",
+            "icon": "heroicons:envelope-20-solid"
+        }
+    ],
+    "sections": {
+        "projects": {
+            "label": "My work",
+            "title": "Projects",
+            "viewAllText": "View All"
+        },
+        "resume": {
+            "label": "Professional Background",
+            "title": "Experience & Awards",
+            "viewAllText": "View Resume"
+        }
+    }
+}

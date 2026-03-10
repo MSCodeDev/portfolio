@@ -1,0 +1,266 @@
+[
+    {
+        "title": "Academic Medic",
+        "description": "Developed a platform for this tutoring company where parents can find tutors and tutors can manage their sessions and payments.",
+        "startYear": 2018,
+        "tags": [
+            "php"
+        ],
+        "status": "Deployed"
+    },
+    {
+        "title": "ACGL",
+        "description": "Designed and developed 6 websites and 3 apps for Africa's largest esports platform, growing to 150k+ users and 1m+ annual visits. Engineered a full tournament management system with gamification, loyalty points, live chat, and API integrations.",
+        "startYear": 2016,
+        "endYear": 2025,
+        "tags": [
+            "php",
+            "azure",
+            "linux"
+        ],
+        "status": "Deployed",
+        "highlight": true
+    },
+    {
+        "title": "Calico Catalog",
+        "description": "A smart shopping list app that makes grocery shopping a breeze.",
+        "startYear": 2025,
+        "tags": [
+            "php",
+            "javascript"
+        ],
+        "status": "Active"
+    },
+    {
+        "title": "CSIR",
+        "description": "Rebuilt the website for South Africa's Council for Scientific and Industrial Research. Included AI powered text-to-speech, data migration and over 300 unique page designs.",
+        "startYear": 2025,
+        "tags": [
+            "php",
+            "ai"
+        ],
+        "status": "Deployed",
+        "featured": true,
+        "highlight": true
+    },
+    {
+        "title": "Curro Esports",
+        "description": "Created a school esports platform for Curro private schools group, with full SSO integration.",
+        "startYear": 2021,
+        "tags": [
+            "php",
+            "linux"
+        ],
+        "status": "Deployed",
+        "highlight": true
+    },
+    {
+        "title": "Dispatch",
+        "description": "A calendar-based task management app that makes managing tasks, projects, notes, and daily planning easier — all in one place.",
+        "startYear": 2026,
+        "tags": [
+            "javascript"
+        ],
+        "status": "Active"
+    },
+    {
+        "title": "Dr Viljoen",
+        "description": "Developed a student management platform tracking school fees, discounts, and bursaries, with PDF report exports and printing.",
+        "startYear": 2024,
+        "tags": [
+            "php",
+            "linux"
+        ],
+        "status": "Deployed"
+    },
+    {
+        "title": "Engen",
+        "description": "Assisted in the optimization and security hardening of the website of one of South Africa's largest petrol stations.",
+        "startYear": 2025,
+        "tags": [
+            "linux",
+            "javascript"
+        ],
+        "status": "Contributor"
+    },
+    {
+        "title": "Esports Central",
+        "description": "Optimisation and management of an esports blog on WordPress, including hosting, backups, and emails.",
+        "startYear": 2019,
+        "tags": [
+            "php",
+            "linux"
+        ],
+        "status": "Deployed",
+        "highlight": true
+    },
+    {
+        "title": "Fleet Fuel",
+        "description": "Developed a rebate platform that allowed groups to create and manage their fleets, vehicles and drivers while receiving loyalty points on fuel purchases.",
+        "startYear": 2025,
+        "tags": [
+            "dotnet",
+            "angular",
+            "azure"
+        ],
+        "status": "Active",
+        "highlight": true
+    },
+    {
+        "title": "Halo South Africa",
+        "description": "Built a community website for Halo South Africa where visitors could create accounts, view their Halo stats via API integrations, read local news, and subscribe to a newsletter.",
+        "startYear": 2015,
+        "tags": [
+            "php"
+        ],
+        "status": "Contributor"
+    },
+    {
+        "title": "Lume Advisory",
+        "description": "Built a one-page informational website for a local occupational therapist with a custom theme, designed images, and a contact form.",
+        "startYear": 2021,
+        "tags": [
+            "php"
+        ],
+        "status": "Archived"
+    },
+    {
+        "title": "MobiTutorZA",
+        "description": "Maintained a Maths tutoring portal and web app featuring tests and exams using LaTeX for Nelson Mandela University.",
+        "startYear": 2025,
+        "tags": [
+            "javascript",
+            "php",
+            "aws"
+        ],
+        "status": "Contributor"
+    },
+    {
+        "title": "Northglen",
+        "description": "Built an informative website detailing the services and past work of a local painting and construction company. A tailored theme and custom images were designed.",
+        "startYear": 2021,
+        "tags": [
+            "php"
+        ],
+        "status": "Archived"
+    },
+    {
+        "title": "Open Learning Group",
+        "description": "Taught weekend ICT certification classes for teachers in the Eastern Cape who had no prior ICT training.",
+        "startYear": 2017,
+        "status": "Contributor"
+    },
+    {
+        "title": "Orena",
+        "description": "An open-source tournament management system that allows anyone to host their own esports — or any kind of — competitions.",
+        "startYear": 2026,
+        "tags": [
+            "javascript",
+            "vercel"
+        ],
+        "status": "Active",
+        "featured": true,
+        "highlight": true
+    },
+    {
+        "title": "Patients VIP",
+        "description": "Created AI-powered serverless tools to improve day-to-day productivity. AI was used to generate videos, audio, and automated captions.",
+        "startYear": 2025,
+        "tags": [
+            "ai",
+            "python",
+            "javascript",
+            "vercel"
+        ],
+        "status": "Contributor"
+    },
+    {
+        "title": "Petro-Logistics",
+        "description": "Performed a deep infrastructure analysis and implemented a system-wide backup strategy for a tanker tracking system.",
+        "startYear": 2025,
+        "tags": [
+            "linux"
+        ],
+        "status": "Contributor"
+    },
+    {
+        "title": "Sector 17 Esports",
+        "description": "Developed a website for this gaming group showcasing their teams, players, tournaments, matches, videos, streams, and social accounts.",
+        "startYear": 2014,
+        "tags": [
+            "php"
+        ],
+        "status": "Archived"
+    },
+    {
+        "title": "Sircula",
+        "description": "Maintained this farm-hand management web app, which included reporting, incident management, promotions and signature inputs.",
+        "startYear": 2025,
+        "tags": [
+            "javascript"
+        ],
+        "status": "Contributor"
+    },
+    {
+        "title": "SpineStack",
+        "description": "A self-hosted physical book collection manager for tracking, organising, and cataloguing your personal library.",
+        "startYear": 2026,
+        "tags": [
+            "java",
+            "javascript"
+        ],
+        "status": "Active",
+        "featured": true
+    },
+    {
+        "title": "ThatFoodGuys",
+        "description": "Developed an informative website for this catering company, showcasing their services and food trucks and offering visitors a quick quote feature.",
+        "startYear": 2016,
+        "tags": [
+            "php"
+        ],
+        "status": "Archived"
+    },
+    {
+        "title": "Time2Read",
+        "description": "Maintained the Time2Read learner reading platform, including the management web portal and Unity game across 5 platforms.",
+        "startYear": 2025,
+        "tags": [
+            "php",
+            "angular",
+            "unity",
+            "aws"
+        ],
+        "status": "Contributor"
+    },
+    {
+        "title": "Toyota Gaming Engine",
+        "description": "Developed a tournament platform for Toyota South Africa allowing users to sign up, compete in events, and watch curated esports videos.",
+        "startYear": 2021,
+        "tags": [
+            "php",
+            "linux"
+        ],
+        "status": "Deployed",
+        "featured": true,
+        "highlight": true
+    },
+    {
+        "title": "Zombie Gamer",
+        "description": "Migrated this esports blog to a modern CMS and gave it a revamped look and feel and full mobile responsiveness.",
+        "startYear": 2020,
+        "tags": [
+            "php"
+        ],
+        "status": "Contributor"
+    },
+    {
+        "title": "Zumi Africa",
+        "description": "Contracted to optimise this African Women's magazine and blog. Reduced plugins by 70% and cut page load times by 30%.",
+        "startYear": 2019,
+        "tags": [
+            "php"
+        ],
+        "status": "Contributor"
+    }
+]

@@ -1,0 +1,127 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Nav from "@/components/nav.astro";
+import Footer from "@/components/footer.astro";
+import projects from "@/data/projects.json";
+
+// Get all projects and sort by startYear (desc), then title (asc)
+const sortedProjects = [...projects].sort((a, b) => {
+  const yearDiff = b.startYear - a.startYear;
+  if (yearDiff !== 0) return yearDiff;
+  return a.title.localeCompare(b.title);
+});
+
+const allTags = [...new Set(
+  sortedProjects.flatMap((p) => p.tags ?? [])
+)].sort();
+
+
+function statusColor(status: string): string {
+  const s = status.toLowerCase();
+  if (s.includes('dep'))
+    return 'border-blue-500/50 bg-blue-500/10 text-blue-400';
+  if (s.includes('arch'))
+    return 'border-yellow-500/50 bg-yellow-500/10 text-yellow-400';
+  if (s.includes('contri'))
+    return 'border-orange-500/50 bg-orange-500/10 text-orange-400';
+  return 'border-green-500/50 bg-green-500/10 text-green-400';
+}
+---
+
+<Layout title="Projects - Mitch Stroebel">
+  <Nav />
+
+  <main class="max-w-5xl mx-auto py-32">
+    <div class="mb-12">
+      <h1 class="text-5xl md:text-6xl font-bold text-[var(--white)] mb-4">
+        Projects
+      </h1>
+      <p class="text-xl text-[var(--white-icon)]">
+        A collection of my web development projects and contributions.
+      </p>
+    </div>
+
+    <!-- Tag filter -->
+    <div class="flex flex-wrap gap-3 mb-8" id="tag-filters">
+      <label class="tag-filter">
+        <input type="radio" name="tag" value="" class="sr-only" checked />
+        <span class="cursor-pointer text-sm px-3 py-1.5 rounded-full border border-[var(--sec)] bg-[var(--sec)] text-[var(--background)] transition-colors">All</span>
+      </label>
+      {allTags.map((tag) => (
+        <label class="tag-filter">
+          <input type="radio" name="tag" value={tag} class="sr-only" />
+          <span class="cursor-pointer text-sm px-3 py-1.5 rounded-full border border-[var(--white-icon-tr)] text-[var(--white-icon)] hover:border-[var(--sec)] hover:text-[var(--sec)] transition-colors">{tag}</span>
+        </label>
+      ))}
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      {sortedProjects.map((project) => (
+        <article data-tags={JSON.stringify(project.tags ?? [])} class={`tilt-card bg-[#1414149c] border border-[var(--white-icon-tr)] rounded-lg overflow-hidden flex flex-col`}>
+          <div class="p-6 flex flex-col flex-1">
+            <div class="flex items-start justify-between gap-4 mb-2">
+              <h2 class={`text-2xl font-bold${project.highlight ? ' text-purple-400' : ' text-[var(--white)]'}`}>
+                {project.title}
+              </h2>
+              <span class={`text-sm shrink-0 pt-1${project.highlight ? ' text-purple-400' : ' text-[var(--white-icon)]'}`}>
+                {project.startYear}{project.endYear ? `–${project.endYear}` : ''}
+              </span>
+            </div>
+
+            <p class={`mb-4 line-clamp-3 flex-1${project.highlight ? ' text-purple-400/70' : ' text-[var(--white-icon)]'}`}>
+              {project.description}
+            </p>
+
+            <div class="flex flex-wrap items-center gap-2 mt-auto">
+              {project.tags && project.tags.map((tag: string) => (
+                <span class={`text-xs px-2 py-1 rounded${project.highlight ? ' bg-purple-500/10 text-purple-400' : ' bg-[var(--white-icon-tr)] text-[var(--white-icon)]'}`}>
+                  #{tag}
+                </span>
+              ))}
+              <span class={`ml-auto text-xs px-2 py-1 border rounded-full ${statusColor(project.status)}`}>
+                {project.status}
+              </span>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    {sortedProjects.length === 0 && (
+      <div class="text-center py-12">
+        <p class="text-xl text-[var(--white-icon)]">
+          No projects yet. Check back soon!
+        </p>
+      </div>
+    )}
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .tag-filter input:checked + span {
+    border-color: var(--sec);
+    background-color: var(--sec);
+    color: var(--background);
+  }
+</style>
+
+<script>
+  const filters = document.getElementById('tag-filters');
+  const grid = document.querySelector('.grid');
+
+  filters?.addEventListener('change', (e) => {
+    const selected = (e.target as HTMLInputElement).value;
+    grid?.querySelectorAll<HTMLElement>('article[data-tags]').forEach((card) => {
+      const tags: string[] = JSON.parse(card.dataset.tags ?? '[]');
+      card.style.display = (!selected || tags.includes(selected)) ? '' : 'none';
+    });
+  });
+</script>

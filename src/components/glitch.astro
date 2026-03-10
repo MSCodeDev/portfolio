@@ -1,0 +1,184 @@
+---
+interface Props {
+  glitchColors?: string[];
+  glitchSpeed?: number;
+  centerVignette?: boolean;
+  outerVignette?: boolean;
+  smooth?: boolean;
+}
+
+const {
+  glitchColors = ["#5e4491", "#A476FF", "#241a38"],
+  glitchSpeed = 33,
+  centerVignette = false,
+  outerVignette = false,
+  smooth = true,
+} = Astro.props;
+---
+
+<div
+  class="letter-glitch relative w-full h-full bg-[#101010] overflow-hidden"
+  data-colors={JSON.stringify(glitchColors)}
+  data-speed={glitchSpeed}
+  data-smooth={smooth}
+>
+  <canvas class="block w-full h-full"></canvas>
+  {outerVignette && (
+    <div class="absolute top-0 left-0 w-full h-full pointer-events-none bg-[radial-gradient(circle,_rgba(16,16,16,0)_60%,_rgba(16,16,16,1)_100%)]"></div>
+  )}
+  {centerVignette && (
+    <div class="absolute top-0 left-0 w-full h-full pointer-events-none bg-[radial-gradient(circle,_rgba(0,0,0,0.8)_0%,_rgba(0,0,0,0)_60%)]"></div>
+  )}
+</div>
+
+<script>
+  class LetterGlitchController {
+    private canvas: HTMLCanvasElement;
+    private ctx: CanvasRenderingContext2D;
+    private glitchColors: string[];
+    private glitchSpeed: number;
+    private smooth: boolean;
+    private animationId: number | null = null;
+    private letters: { char: string; color: string; targetColor: string; colorProgress: number }[] = [];
+    private grid = { columns: 0, rows: 0 };
+    private lastGlitchTime = Date.now();
+    private readonly fontSize = 16;
+    private readonly charWidth = 10;
+    private readonly charHeight = 20;
+    private readonly chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$&*()-_+=/[]{};:<>,0123456789".split("");
+
+    constructor(container: HTMLElement) {
+      this.canvas = container.querySelector("canvas")!;
+      this.ctx = this.canvas.getContext("2d")!;
+      this.glitchColors = JSON.parse(container.dataset.colors || '["#5e4491","#A476FF","#241a38"]');
+      this.glitchSpeed = Number(container.dataset.speed) || 33;
+      this.smooth = container.dataset.smooth === "true";
+
+      this.resizeCanvas();
+      this.animate();
+
+      let resizeTimeout: ReturnType<typeof setTimeout>;
+      window.addEventListener("resize", () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+          if (this.animationId) cancelAnimationFrame(this.animationId);
+          this.resizeCanvas();
+          this.animate();
+        }, 100);
+      });
+    }
+
+    private getRandomChar() {
+      return this.chars[Math.floor(Math.random() * this.chars.length)];
+    }
+
+    private getRandomColor() {
+      return this.glitchColors[Math.floor(Math.random() * this.glitchColors.length)];
+    }
+
+    private hexToRgb(hex: string) {
+      hex = hex.replace(/^#?([a-f\d])([a-f\d])([a-f\d])$/i, (_m, r, g, b) => r + r + g + g + b + b);
+      const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+      return result ? { r: parseInt(result[1], 16), g: parseInt(result[2], 16), b: parseInt(result[3], 16) } : null;
+    }
+
+    private interpolateColor(start: { r: number; g: number; b: number }, end: { r: number; g: number; b: number }, factor: number) {
+      return `rgb(${Math.round(start.r + (end.r - start.r) * factor)}, ${Math.round(start.g + (end.g - start.g) * factor)}, ${Math.round(start.b + (end.b - start.b) * factor)})`;
+    }
+
+    private resizeCanvas() {
+      const parent = this.canvas.parentElement;
+      if (!parent) return;
+
+      const dpr = window.devicePixelRatio || 1;
+      const rect = parent.getBoundingClientRect();
+
+      this.canvas.width = rect.width * dpr;
+      this.canvas.height = rect.height * dpr;
+      this.canvas.style.width = `${rect.width}px`;
+      this.canvas.style.height = `${rect.height}px`;
+      this.ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+      const columns = Math.ceil(rect.width / this.charWidth);
+      const rows = Math.ceil(rect.height / this.charHeight);
+      this.grid = { columns, rows };
+      this.letters = Array.from({ length: columns * rows }, () => ({
+        char: this.getRandomChar(),
+        color: this.getRandomColor(),
+        targetColor: this.getRandomColor(),
+        colorProgress: 1,
+      }));
+      this.drawLetters();
+    }
+
+    private drawLetters() {
+      if (this.letters.length === 0) return;
+      const { width, height } = this.canvas.getBoundingClientRect();
+      this.ctx.clearRect(0, 0, width, height);
+      this.ctx.font = `${this.fontSize}px monospace`;
+      this.ctx.textBaseline = "top";
+
+      for (let i = 0; i < this.letters.length; i++) {
+        const letter = this.letters[i];
+        const x = (i % this.grid.columns) * this.charWidth;
+        const y = Math.floor(i / this.grid.columns) * this.charHeight;
+        this.ctx.fillStyle = letter.color;
+        this.ctx.fillText(letter.char, x, y);
+      }
+    }
+
+    private updateLetters() {
+      if (this.letters.length === 0) return;
+      const updateCount = Math.max(1, Math.floor(this.letters.length * 0.05));
+
+      for (let i = 0; i < updateCount; i++) {
+        const index = Math.floor(Math.random() * this.letters.length);
+        const letter = this.letters[index];
+        if (!letter) continue;
+
+        letter.char = this.getRandomChar();
+        letter.targetColor = this.getRandomColor();
+
+        if (!this.smooth) {
+          letter.color = letter.targetColor;
+          letter.colorProgress = 1;
+        } else {
+          letter.colorProgress = 0;
+        }
+      }
+    }
+
+    private handleSmoothTransitions() {
+      let needsRedraw = false;
+      for (const letter of this.letters) {
+        if (letter.colorProgress < 1) {
+          letter.colorProgress += 0.05;
+          if (letter.colorProgress > 1) letter.colorProgress = 1;
+
+          const startRgb = this.hexToRgb(letter.color);
+          const endRgb = this.hexToRgb(letter.targetColor);
+          if (startRgb && endRgb) {
+            letter.color = this.interpolateColor(startRgb, endRgb, letter.colorProgress);
+            needsRedraw = true;
+          }
+        }
+      }
+      if (needsRedraw) this.drawLetters();
+    }
+
+    private animate = () => {
+      const now = Date.now();
+      if (now - this.lastGlitchTime >= this.glitchSpeed) {
+        this.updateLetters();
+        this.drawLetters();
+        this.lastGlitchTime = now;
+      }
+      if (this.smooth) this.handleSmoothTransitions();
+      this.animationId = requestAnimationFrame(this.animate);
+    };
+  }
+
+  document.querySelectorAll<HTMLElement>(".letter-glitch").forEach((el) => {
+    new LetterGlitchController(el);
+  });
+</script>

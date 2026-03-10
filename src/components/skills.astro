@@ -1,0 +1,83 @@
+---
+import { Icon } from "astro-icon/components";
+import { services as skills } from "@/data/skills.json";
+---
+
+<div class="text-left pt-3 md:pt-9">
+  <h3 class="text-[var(--white)] text-3xl md:text-4xl font-semibold md:mb-6">
+    What I do
+  </h3>
+  <ul class="space-y-4 mt-4 text-lg">
+    {skills.map(({ title: category, icon, items }) => (
+      <li class="w-full">
+        <div
+          class="skills-accordion md:w-[400px] w-full bg-[#1414149c] rounded-2xl text-left hover:bg-opacity-80 transition-all border border-[var(--white-icon-tr)] cursor-pointer overflow-hidden"
+          data-category={category}
+        >
+          <div class="flex items-center gap-3 p-4">
+            <Icon name={icon} class="w-6 h-6 text-[var(--sec)] opacity-70" />
+            <div class="flex items-center gap-2 flex-grow justify-between">
+              <div class="min-w-0 max-w-[200px] md:max-w-none overflow-hidden">
+                <span class="block truncate text-[var(--white)] text-lg">
+                  {category}
+                </span>
+              </div>
+              <Icon
+                name="heroicons:chevron-down-20-solid"
+                class="skills-chevron w-6 h-6 text-[var(--white)] transform transition-transform flex-shrink-0"
+              />
+            </div>
+          </div>
+
+          <div class="skills-content transition-all duration-300 px-4 max-h-0 opacity-0">
+            <ul class="space-y-2 text-[var(--white-icon)] text-sm pb-4">
+              {items.map((item) => (
+                <div class="flex items-center">
+                  <span class="pl-1">•</span>
+                  <li class="pl-3">{item}</li>
+                </div>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </li>
+    ))}
+  </ul>
+</div>
+
+<script>
+  let openCategory: string | null = null;
+
+  document.querySelectorAll<HTMLElement>(".skills-accordion").forEach((el) => {
+    el.addEventListener("click", () => {
+      const category = el.dataset.category!;
+      const content = el.querySelector<HTMLElement>(".skills-content")!;
+      const chevron = el.querySelector<HTMLElement>(".skills-chevron")!;
+
+      if (openCategory === category) {
+        // Close current
+        content.style.maxHeight = "0";
+        content.style.opacity = "0";
+        chevron.style.transform = "rotate(0deg)";
+        openCategory = null;
+      } else {
+        // Close previous
+        if (openCategory) {
+          const prev = document.querySelector<HTMLElement>(`.skills-accordion[data-category="${openCategory}"]`);
+          if (prev) {
+            const prevContent = prev.querySelector<HTMLElement>(".skills-content")!;
+            const prevChevron = prev.querySelector<HTMLElement>(".skills-chevron")!;
+            prevContent.style.maxHeight = "0";
+            prevContent.style.opacity = "0";
+            prevChevron.style.transform = "rotate(0deg)";
+          }
+        }
+        // Open new
+        content.style.maxHeight = `${content.scrollHeight}px`;
+        content.style.opacity = "1";
+        chevron.style.transform = "rotate(180deg)";
+        openCategory = category;
+      }
+    });
+  });
+</script>

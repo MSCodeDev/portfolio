@@ -1,0 +1,269 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Nav from "@/components/nav.astro";
+import Footer from "@/components/footer.astro";
+import { Icon } from "astro-icon/components";
+import LetterGlitch from "@/components/glitch.astro";
+import LogoWall from "@/components/logos.astro";
+import SkillsList from "@/components/skills.astro";
+import projects from "@/data/projects.json";
+import timeline from "@/data/timeline.json";
+import info from "@/data/info.json";
+
+// Timeline
+const homeTimeline = timeline.filter((item) => item.homepage);
+
+// Projects
+const latestProjects = projects
+  .filter((p) => p.featured === true)
+  .sort((a, b) => {
+    const yearDiff = b.startYear - a.startYear;
+    if (yearDiff !== 0) return yearDiff;
+    return a.title.localeCompare(b.title);
+  });
+
+function statusColor(status: string): string {
+  const s = status.toLowerCase();
+  if (s.includes('dep'))
+    return 'border-blue-500/50 bg-blue-500/10 text-blue-400';
+  if (s.includes('arch'))
+    return 'border-yellow-500/50 bg-yellow-500/10 text-yellow-400';
+  if (s.includes('contri'))
+    return 'border-orange-500/50 bg-orange-500/10 text-orange-400';
+  return 'border-green-500/50 bg-green-500/10 text-green-400';
+}
+
+
+---
+
+<Layout title={info.meta.title}>
+  <Nav />
+
+  <!-- Home -->
+  <section class="text-[var(--white)] mt-12 md:mt-0" id="home">
+    <div class="max-w-5xl mx-auto space-y-8 md:pt-36 pb-20">
+      <div class="text-left space-y-4">
+        <p class="text-md md:text-lg text-[var(--white-icon)] shiny-white">
+          {info.greeting}
+        </p>
+        <div
+          class="flex flex-col lg:flex-row lg:items-center space-y-4 lg:space-y-0 lg:space-x-8 md:gap-4"
+        >
+          <h1
+            class="text-[var(--white)] text-5xl md:text-6xl font-medium text-pretty leading-none"
+          >
+            {info.firstName} <br /> {info.lastName}
+          </h1>
+          <p class="text-md md:text-2xl text-[var(--white-icon)]" set:html={info.bio.replace('{role}', `<span class="text-[var(--sec)] shiny-sec">${info.role}</span>`)} />
+        </div>
+        <div class="flex justify-start gap-2 pt-3 md:pt-6">
+          {info.socials.map((social) => (
+            <a
+              target="_blank"
+              href={social.href}
+              aria-label={social.label}
+              class="text-[var(--white-icon)] hover:text-white transition duration-300 ease-in-out border border-1 border-[var(--white-icon-tr)] p-3 rounded-xl bg-[#1414149c] hover:bg-[var(--white-icon-tr)]"
+            >
+              <Icon name={social.icon} class={`${social.icon.startsWith('simple-icons:') ? 'w-7 h-7' : 'w-8 h-8'}`} />
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <LogoWall />
+
+      <div class="flex flex-col lg:flex-row items-center gap-8">
+        <SkillsList />
+        <div
+          class="flex justify-center md:w-full md:h-[292px] size-[290px] pt-3 md:pt-9 md:ml-16"
+        >
+          <LetterGlitch
+            glitchColors={["#5e4491", "#A476FF", "#241a38"]}
+            glitchSpeed={33}
+            centerVignette={false}
+            outerVignette={true}
+            smooth={true}
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section
+    id="projects"
+    class="text-[var(--white)]"
+  >
+    <div class="max-w-5xl mx-auto">
+      <h2 class="text-lg text-[var(--sec)] mb-2 shiny-sec">{info.sections.projects.label}</h2>
+      <div class="flex items-center justify-between mb-8">
+        <h3 class="text-4xl md:text-5xl font-medium">{info.sections.projects.title}</h3>
+        <a 
+          href="/projects"
+          class="inline-flex items-center gap-2 px-3 md:px-6 py-3 bg-[var(--white-icon-tr)] text-[var(--white)] rounded-lg font-semibold border border-[var(--white-icon-tr)] hover:bg-[var(--sec)] hover:border-[var(--sec)] hover:text-[var(--background)] transition-all"
+        >
+          <Icon name="heroicons:arrow-top-right-on-square-20-solid" class="w-5 h-5" />
+          <span class="hidden md:inline">{info.sections.projects.viewAllText}</span>
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        {latestProjects.map((project) => (
+          <div class="tilt-card bg-[#1414149c] border border-[var(--white-icon-tr)] rounded-lg overflow-hidden flex flex-col">
+            <div class="p-6 flex flex-col flex-1">
+              <div class="block mb-2">
+                <h4 class="text-xl font-semibold text-[var(--white)]">
+                  {project.title}
+                </h4>
+              </div>
+              <p class="text-[var(--white-icon)] mb-4 line-clamp-3 flex-1">
+                {project.description}
+              </p>
+              <div class="flex flex-wrap items-center gap-2 mt-auto">
+                {project.tags && project.tags.slice(0, 3).map((tag: string) => (
+                  <span class="text-xs px-2 py-1 bg-[var(--white-icon-tr)] text-[var(--white-icon)] rounded">
+                    {tag}
+                  </span>
+                ))}
+                <span class={`ml-auto text-xs px-2 py-1 border rounded-full ${statusColor(project.status)}`}>
+                  {project.status}
+                </span>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="video-fade relative flex items-center justify-center overflow-hidden bg-black mix-blend-lighten h-[650px] md:h-[800px] -mt-[250px] -mb-[300px] -z-10">
+    <video
+      autoplay
+      loop
+      muted
+      playsinline
+      class="absolute top-0 left-0 w-full h-full object-contain mix-blend-screen"
+    >
+      <source src="/blackhole.webm" type="video/webm" />
+    </video>
+  </section>
+
+  <!-- Resume -->
+  <section id="resume" class="w-full py-12">
+    <div class="max-w-5xl mx-auto">
+      <h2 class="text-lg text-[var(--sec)] mb-2 shiny-sec">{info.sections.resume.label}</h2>
+      <div class="flex items-center justify-between mb-8">
+        <h3 class="text-3xl font-medium text-[var(--white)]">
+          {info.sections.resume.title}
+        </h3>
+        <a 
+          href="/resume"
+          class="inline-flex items-center gap-2 px-3 md:px-6 py-3 bg-[var(--white-icon-tr)] text-[var(--white)] rounded-lg font-semibold border border-[var(--white-icon-tr)] hover:bg-[var(--sec)] hover:border-[var(--sec)] hover:text-[var(--background)] transition-all"
+        >
+          <Icon name="heroicons:arrow-top-right-on-square-20-solid" class="w-5 h-5" />
+          <span class="hidden md:inline">{info.sections.resume.viewAllText}</span>
+        </a>
+      </div>
+
+      <div class="timeline-line relative pl-10 ml-3">
+        {homeTimeline.map((item) => (
+          <div class="relative mb-8 last:mb-0">
+            {item.icon ? (
+              <div class={`absolute -left-[3.1rem] top-4 w-5 h-5 flex items-center justify-center ${item.type === 'award' ? 'text-amber-400' : 'text-[var(--sec)]'}`}>
+                <Icon name={item.icon} class="w-5 h-5" />
+              </div>
+            ) : (
+              <div class={`absolute -left-[3.1rem] top-4 w-5 h-5 rounded-full bg-[var(--background)] border-2 flex items-center justify-center ${item.type === 'award' ? 'border-amber-400' : 'border-[var(--sec)]'}`}>
+                <div class={`w-2 h-2 rounded-full ${item.type === 'award' ? 'bg-amber-400' : 'bg-[var(--sec)]'}`} />
+              </div>
+            )}
+            <div class="tilt-card bg-[#1414149c] border border-[var(--white-icon-tr)] rounded-xl p-4">
+              <div class="flex items-start gap-3">
+                <div class="flex-1 min-w-0">
+                  <div class="flex items-center justify-between gap-2 flex-wrap">
+                    <div class="flex items-center gap-2 flex-wrap">
+                      <h4 class="text-lg font-semibold text-[var(--white)]">
+                        {item.title}
+                      </h4>
+                      {item.type === "award" && (
+                        <span class="text-[0.65rem] px-1.5 py-0.5 rounded bg-amber-400/15 text-amber-400 uppercase tracking-wider">Award</span>
+                      )}
+                    </div>
+                    <span class="text-xs text-[var(--white-icon)] shrink-0">{item.year}</span>
+                  </div>
+                  <p class={`text-sm ${item.type === 'award' ? 'text-amber-400' : 'text-[var(--sec)]'}`}>
+                    {item.subtitle}
+                  </p>
+                </div>
+              </div>
+              {(item.shortDescription || item.description) && (
+                <p class="text-[var(--white-icon)] text-sm mt-2">
+                  {item.shortDescription || item.description}
+                </p>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<style is:global>
+  .shiny-sec {
+    background: linear-gradient(135deg, #a476ff 25%, #eee5ff 50%, #a476ff 75%);
+    background-size: 400% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: shine 3s linear infinite;
+  }
+
+  @keyframes shine {
+    0% {
+      background-position: 100% 50%;
+    }
+    30%,
+    70% {
+      background-position: 0% 50%;
+    }
+  }
+</style>
+
+<style>
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .video-fade {
+    -webkit-mask-image:
+      linear-gradient(to right, transparent 0%, black 48%, black 82%, transparent 100%),
+      linear-gradient(to bottom, transparent 0%, black 48%, black 82%, transparent 100%);
+    mask-image:
+      linear-gradient(to right, transparent 0%, black 48%, black 82%, transparent 100%),
+      linear-gradient(to bottom, transparent 0%, black 48%, black 82%, transparent 100%);
+    -webkit-mask-composite: source-in;
+    mask-composite: intersect;
+  }
+
+  .timeline-line::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(
+      to bottom,
+      transparent,
+      var(--white-icon-tr) 15%,
+      var(--white-icon-tr) 85%,
+      transparent
+    );
+  }
+</style>
