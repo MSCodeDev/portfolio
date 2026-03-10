@@ -196,9 +196,9 @@ function statusColor(status: string): string {
                   </p>
                 </div>
               </div>
-              {(item.shortDescription || item.description) && (
+              {item.shortDescription && (
                 <p class="text-[var(--white-icon)] text-sm mt-2">
-                  {item.shortDescription || item.description}
+                  {item.shortDescription}
                 </p>
               )}
             </div>

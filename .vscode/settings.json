@@ -21,9 +21,6 @@
         "chat-editing-text-model:**/*.markdown": "default",
         "chat-editing-text-model:**/*.mdx": "default",
         "chat-editing-text-model:**/*.mdc": "default",
-        "*.svg": "default",
-        "/drive/www/portfolio/.github/workflows/deploy.yml": "default",
-        ".github/workflows/deploy.yml": "default",
-        "**/.github/workflows/deploy.yml": "default"
+        "*.svg": "default"
     }
 }
