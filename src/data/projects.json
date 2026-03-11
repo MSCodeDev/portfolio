@@ -33,7 +33,7 @@
     },
     {
         "title": "CSIR",
-        "description": "Rebuilt the website for South Africa's Council for Scientific and Industrial Research. Included AI powered text-to-speech, data migration and over 300 unique page designs.",
+        "description": "Rebuilt the website for South Africa's Council for Scientific and Industrial Research. Included AI powered text-to-speech, data migration and over 300 unique page designs and AI text-to-speech and search integrations.",
         "startYear": 2025,
         "tags": [
             "php",
@@ -42,6 +42,16 @@
         "status": "Deployed",
         "featured": true,
         "highlight": true
+    },
+    {
+        "title": "Colorweis",
+        "description": "Created a B2B e-commerce platform for this plant nursery, which included customer accounts, bulk product creation, and order management.",
+        "startYear": 2019,
+        "tags": [
+            "php",
+            "linux"
+        ],
+        "status": "Archived"
     },
     {
         "title": "Curro Esports",

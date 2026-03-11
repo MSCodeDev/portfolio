@@ -1,23 +1,23 @@
 [
     {
         "type": "experience",
-        "title": "Intermediate Developer",
-        "subtitle": "AvoChoc",
+        "title": "Intermediate Software Engineer",
+        "subtitle": "Avochoc",
         "year": "2025 - Present",
         "icon": "heroicons:trophy",
         "homepage": true,
         "shortDescription": "Leading development of new and existing applications.",
         "items": [
             "Team lead on a fleet fuel loyalty program website for fleet management, oversight, and fuel rebates.",
-            "Lead developer on the rebuild of the CSIR (Council for Scientific and Industrial Research) website.",
-            "Head of Maintenance projects including a Maths Tutoring application and a learner reading platform featuring an admin portal and a Unity game for mobile and desktop.",
-            "Performed an infrastructure analysis and implemented a backup solution for a fuel tanker tracking system.",
-            "Led an internal project to implement tools for Password and API management"
+            "Selected to lead the development of a fleet fuel loyalty program for fleet management, oversight, and fuel rebates serving business clients.",
+            "Lead the full rebuild of the CSIR (Council for Scientific and Industrial Research) website with over 300 unique page designs.",
+            "Head of all maintenance projects — including a Maths app for NMU and a learner reading Unity-based app and admin portal.",
+            "Performed an infrastructure analysis of a fuel tanker tracking system and implemented a reliable backup solution to safeguard operational data."
         ]
     },
     {
         "type": "award",
-        "title": "AvoChoc Customer Satisfaction",
+        "title": "Avochoc Customer Satisfaction",
         "year": "2025",
         "icon": "heroicons:presentation-chart-bar",
         "homepage": true
@@ -60,11 +60,11 @@
         "homepage": true,
         "shortDescription": "Designed and developed 6 websites and 3 apps, attracting over 150k registered users with 1m+ annual visits.",
         "items": [
-            "Designed and developed 6 websites and 3 apps, attracting over 150k registered users with 1m+ visits annually",
-            "Engineered a tournament management system incorporating complex logic, gamification, loyalty points, API integrations, wallets, live chat, and more. Currently oversees 5k+ tournaments, 100k+ matches, and 40k+ teams",
-            "Set up and managed 5 VPS instances and 2 bare-metal servers with 99% uptime since 2022",
-            "Directed projects involving Graphics, Video, Social and Competition teams that featured collaborations with brands such as Acer, BMW, Burger King, MTN, Radisson, Red Bull, and Xiaomi. Involved in over 100 projects",
-            "Led a support team that responded to website and tournament support tickets"
+            "Designed and built 6 websites and 3 apps from the ground up, growing the platform to 150k+ registered users and 1M+ annual visits.",
+            "Engineered a tournament management system with gamification, wallets, and live chat — scaling to 5k+ tournaments, and 40k+ teams.",
+            "Scaled infrastructure reliability for 5 VPS instances and 2 bare-metal servers, delivering 99% uptime over 3 years.",
+            "Directed 100+ multi-team projects, featuring collaborations with brands such as BMW, Burger King, MTN, Radisson, Red Bull, and Xiaomi.",
+            "Selected to lead the support team, resolving website and tournament tickets for 150k+ users."
         ]
     },
     {
@@ -76,10 +76,8 @@
         "homepage": true,
         "shortDescription": "Oversight of school infrastructure & Taught ICT classes for students in Grade R through to Grade 7.",
         "items": [
-            "Overhauled the school network of 60+ devices, modernized 30+ PCs with the latest OS and office software, built 10+ new PCs, and installed 5 WIFI access points across school grounds",
-            "Taught ICT classes for students in Grade R through to Grade 7, with a total of over 1500 students over 3 years",
-            "Covered fundamental computer skills and literacy, incorporating gamification techniques into the curriculum",
-            "Led weekend classes for the Eastern Cape Open Learning Group that allowed teachers without any ICT training to get certified (2017-2018)"
+            "Overhauled the school network of 60+ devices — modernized 30+ PCs, built 10+ new machines, and installed 5 WiFi access points across campus, improving reliability for staff and students.",
+            "Taught ICT classes from Grade R through Grade 7, educating 1,500+ students over 3 years with a gamified curriculum covering fundamental computer skills and digital literacy."
         ]
     },
     {
