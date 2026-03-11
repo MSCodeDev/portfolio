@@ -176,9 +176,22 @@ const {
       if (this.smooth) this.handleSmoothTransitions();
       this.animationId = requestAnimationFrame(this.animate);
     };
+
+    destroy() {
+      if (this.animationId) cancelAnimationFrame(this.animationId);
+    }
   }
 
-  document.querySelectorAll<HTMLElement>(".letter-glitch").forEach((el) => {
-    new LetterGlitchController(el);
-  });
+  const instances = new WeakMap<HTMLElement, LetterGlitchController>();
+
+  function initGlitch() {
+    document.querySelectorAll<HTMLElement>(".letter-glitch").forEach((el) => {
+      if (!instances.has(el)) {
+        instances.set(el, new LetterGlitchController(el));
+      }
+    });
+  }
+
+  initGlitch();
+  document.addEventListener("astro:page-load", initGlitch);
 </script>

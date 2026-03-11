@@ -1,16 +1,18 @@
 ---
+import { ViewTransitions } from "astro:transitions";
+import Nav from "@/components/nav.astro";
+import Footer from "@/components/footer.astro";
 import info from "@/data/info.json";
 
 interface Props {
   title: string;
 }
-
-const { title } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
+    <ViewTransitions />
     <meta charset="UTF-8" />
     <meta name="description" content={info.meta.description} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -22,12 +24,16 @@ const { title } = Astro.props;
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content={info.meta.ogSiteName} />
 
-    <title>{title}</title>
+    <title>{info.meta.title}</title>
   </head>
-  <body class="bg-[--background] sm:px-28 lg:px-20 px-9 relative overflow-x-hidden">
-    <div class="contours-top"></div>
-    <slot />
-    <div class="contours-bottom"></div>
+  <body class="bg-[--background] sm:px-28 lg:px-20 px-9 relative overflow-x-hidden" transition:persist style="view-transition-name: none;">
+    <Nav />
+    <div class="contours-top" transition:persist></div>
+    <div style="view-transition-name: page-content;">
+      <slot />
+      <Footer />
+    </div>
+    <div class="contours-bottom" transition:persist></div>
   </body>
 </html>
 
@@ -80,6 +86,7 @@ const { title } = Astro.props;
     opacity: 0.7;
     color: #fff;
     pointer-events: none;
+    view-transition-name: none;
   }
 
   .contours-top {
@@ -127,5 +134,42 @@ const { title } = Astro.props;
   .tilt-card:hover {
     transform: perspective(800px) rotateX(1deg) rotateY(-1deg) translateY(-4px);
     box-shadow: 4px 8px 24px rgba(0, 0, 0, 0.25);
+  }
+
+  /* View Transitions animations */
+  ::view-transition-old(root) {
+    animation: none;
+  }
+
+  ::view-transition-new(root) {
+    animation: none;
+  }
+
+  ::view-transition-old(page-content) {
+    animation: fadeOut 0.3s ease-in-out forwards;
+    z-index: 1;
+  }
+
+  ::view-transition-new(page-content) {
+    animation: fadeIn 0.3s ease-in-out forwards;
+    z-index: 2;
+  }
+
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
 </style>

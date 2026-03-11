@@ -1,7 +1,5 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import Nav from "@/components/nav.astro";
-import Footer from "@/components/footer.astro";
 import { Icon } from "astro-icon/components";
 import timeline from "@/data/timeline.json";
 import { stacks as skills } from "@/data/skills.json";
@@ -12,10 +10,8 @@ const badgeColors = {
 };
 ---
 
-<Layout title="Resume - Mitch Stroebel">
-  <Nav />
-  
-  <main class="max-w-5xl mx-auto py-32 space-y-16">
+<Layout>
+  <main class="max-w-5xl mx-auto space-y-8 md:mt-36 my-8">
   <div class="mb-12 flex flex-col md:flex-row md:items-start md:justify-between gap-6">
       <div>
         <h1 class="text-5xl md:text-6xl font-bold text-[var(--white)] mb-4">
@@ -102,7 +98,6 @@ const badgeColors = {
 
   </main>
 
-  <Footer />
 </Layout>
 
 <style>

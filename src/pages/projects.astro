@@ -1,7 +1,5 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import Nav from "@/components/nav.astro";
-import Footer from "@/components/footer.astro";
 import projects from "@/data/projects.json";
 
 // Get all projects and sort by startYear (desc), then title (asc)
@@ -28,10 +26,8 @@ function statusColor(status: string): string {
 }
 ---
 
-<Layout title="Projects - Mitch Stroebel">
-  <Nav />
-
-  <main class="max-w-5xl mx-auto py-32">
+<Layout>
+  <main class="max-w-5xl mx-auto space-y-8 md:mt-36 my-8">
     <div class="mb-12">
       <h1 class="text-5xl md:text-6xl font-bold text-[var(--white)] mb-4">
         Projects
@@ -96,7 +92,6 @@ function statusColor(status: string): string {
     )}
   </main>
 
-  <Footer />
 </Layout>
 
 <style>

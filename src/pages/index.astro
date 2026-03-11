@@ -1,7 +1,5 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import Nav from "@/components/nav.astro";
-import Footer from "@/components/footer.astro";
 import { Icon } from "astro-icon/components";
 import LetterGlitch from "@/components/glitch.astro";
 import LogoWall from "@/components/logos.astro";
@@ -37,11 +35,9 @@ function statusColor(status: string): string {
 ---
 
 <Layout title={info.meta.title}>
-  <Nav />
-
   <!-- Home -->
-  <section class="text-[var(--white)] mt-12 md:mt-0" id="home">
-    <div class="max-w-5xl mx-auto space-y-8 md:pt-36 pb-20">
+  <section class="text-[var(--white)]" id="home">
+    <div class="max-w-5xl mx-auto space-y-8 my-8 md:mt-36">
       <div class="text-left space-y-4">
         <p class="text-md md:text-lg text-[var(--white-icon)] shiny-white">
           {info.greeting}
@@ -208,7 +204,6 @@ function statusColor(status: string): string {
     </div>
   </section>
 
-  <Footer />
 </Layout>
 
 <style is:global>
