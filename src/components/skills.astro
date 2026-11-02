@@ -16,7 +16,7 @@ import { services as skills } from "@/data/skills.json";
         >
           <div class="flex items-center gap-3 p-4">
             <Icon name={icon} class="w-6 h-6 text-[var(--sec)] opacity-70" />
-            <div class="flex items-center gap-2 flex-grow justify-between">
+            <div class="flex items-center gap-2 grow justify-between">
               <div class="min-w-0 max-w-[200px] md:max-w-none overflow-hidden">
                 <span class="block truncate text-[var(--white)] text-lg">
                   {category}
@@ -24,7 +24,7 @@ import { services as skills } from "@/data/skills.json";
               </div>
               <Icon
                 name="heroicons:chevron-down-20-solid"
-                class="skills-chevron w-6 h-6 text-[var(--white)] transform transition-transform flex-shrink-0"
+                class="skills-chevron w-6 h-6 text-[var(--white)] transform transition-transform shrink-0"
               />
             </div>
           </div>

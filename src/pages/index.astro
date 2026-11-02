@@ -117,7 +117,7 @@ function statusColor(status: string): string {
               </p>
               <div class="flex flex-wrap items-center gap-2 mt-auto">
                 {project.tags && project.tags.slice(0, 3).map((tag: string) => (
-                  <span class="text-xs px-2 py-1 bg-[var(--white-icon-tr)] text-[var(--white-icon)] rounded">
+                  <span class="text-xs px-2 py-1 bg-[var(--white-icon-tr)] text-[var(--white-icon)] rounded-sm">
                     {tag}
                   </span>
                 ))}
@@ -182,7 +182,7 @@ function statusColor(status: string): string {
                         {item.title}
                       </h4>
                       {item.type === "award" && (
-                        <span class="text-[0.65rem] px-1.5 py-0.5 rounded bg-amber-400/15 text-amber-400 uppercase tracking-wider">Award</span>
+                        <span class="text-[0.65rem] px-1.5 py-0.5 rounded-sm bg-amber-400/15 text-amber-400 uppercase tracking-wider">Award</span>
                       )}
                     </div>
                     <span class="text-xs text-[var(--white-icon)] shrink-0">{item.year}</span>
@@ -200,6 +200,42 @@ function statusColor(status: string): string {
             </div>
           </div>
         ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Freelance -->
+  <section id="freelance" class="w-full py-12 text-[var(--white)]">
+    <div class="max-w-5xl mx-auto">
+      <h2 class="text-lg text-[var(--sec)] mb-2 shiny-sec">{info.freelance.label}</h2>
+      <h3 class="text-3xl font-medium mb-8">{info.freelance.title}</h3>
+
+      <div class="tilt-card bg-[#1414149c] border border-[var(--white-icon-tr)] rounded-xl p-6">
+        <p class="text-[var(--white-icon)] text-sm md:text-base mb-4">
+          {info.freelance.description}
+        </p>
+        <div class="flex flex-wrap items-center gap-2 mb-6">
+          {info.freelance.services.map((service) => (
+            <span class="text-xs px-2 py-1 bg-[var(--white-icon-tr)] text-[var(--white-icon)] rounded-sm">
+              {service}
+            </span>
+          ))}
+        </div>
+        <div class="flex flex-wrap items-center gap-x-6 gap-y-3">
+          <a
+            href={info.freelance.ctaHref}
+            class="inline-flex items-center gap-2 px-6 py-3 bg-[var(--white-icon-tr)] text-[var(--white)] rounded-lg font-semibold border border-[var(--white-icon-tr)] hover:bg-[var(--sec)] hover:border-[var(--sec)] hover:text-[var(--background)] transition-all"
+          >
+            <Icon name="heroicons:envelope-20-solid" class="w-5 h-5" />
+            <span>{info.freelance.ctaText}</span>
+          </a>
+          <a
+            href="/terms"
+            class="text-sm text-[var(--white-icon)] hover:text-[var(--white)] transition duration-300 ease-in-out underline underline-offset-4"
+          >
+            {info.freelance.termsText}
+          </a>
+        </div>
       </div>
     </div>
   </section>

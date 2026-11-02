@@ -7,7 +7,7 @@
     "bio": "Leveraging a decade of experience as a {role}, I excel at crafting web applications, and I am dedicated to enhancing website performance, engagement, and reliability.",
     "meta": {
         "title": "Mitch Stroebel",
-        "description": "Software Developer",
+        "description": "Mitch Stroebel is a full-stack developer with a decade of experience building fast, reliable web applications, and takes on freelance web projects through MSCode.",
         "ogSiteName": "MSCode",
         "ogImage": "/meta.png"
     },
@@ -43,5 +43,27 @@
             "title": "Experience & Awards",
             "viewAllText": "View Resume"
         }
+    },
+    "freelance": {
+        "label": "Work with me",
+        "title": "Freelance Projects",
+        "description": "From business websites and web apps to hosting and deployment, I can take an idea from first sketch to a live, maintained product.",
+        "services": [
+            "Web Development",
+            "Web Design",
+            "Hosting & TechOps"
+        ],
+        "ctaText": "Get in touch",
+        "ctaHref": "mailto:mitch@mscode.co.za",
+        "termsText": "Terms & Conditions"
+    },
+    "business": {
+        "tradingName": "MSCode",
+        "owner": "Mitch Stroebel",
+        "email": "mitch@mscode.co.za",
+        "country": "South Africa",
+        "currency": "ZAR",
+        "gateway": "PayFast",
+        "lastUpdated": "2 November 2026"
     }
 }

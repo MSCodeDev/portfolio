@@ -2,7 +2,7 @@
 
 ![portfolio](public/meta.png)
 
-A personal portfolio built with Astro and TailwindCSS. Features a home page with a skills overview and timeline, a projects page, and a resume page. All content is data-driven via JSON files in `src/data/`.
+A personal portfolio built with Astro and TailwindCSS. Features a home page with a skills overview, timeline and freelance section, a projects page, a resume page, and a terms & conditions page (including delivery and refund policies). It also generates a sitemap and has a custom 404 page. All content is data-driven via JSON files in `src/data/`.
 
 ## **Stack**  
 - [Astro](https://astro.build/)
@@ -13,6 +13,7 @@ A personal portfolio built with Astro and TailwindCSS. Features a home page with
 ## **Project structure**
 ```
 public/
+|    └── robots.txt
 src/
 ├── components/
 |    ├── footer.astro
@@ -29,9 +30,12 @@ src/
 ├── layouts/
 |    └── Layout.astro
 └── pages/
+     ├── 404.astro
      ├── index.astro
      ├── projects.astro
-     └── resume.astro
+     ├── resume.astro
+     ├── sitemap.xml.ts
+     └── terms.astro
 ```
 
 ## **Local configuration** 

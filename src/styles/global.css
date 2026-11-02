@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+@theme {
+  --animate-scale: scaleAnim 300ms ease-in-out;
+
+  @keyframes scaleAnim {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.1);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+}
+
+/* Keep Tailwind 3's default border colour so bare `border` classes look the same */
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+}

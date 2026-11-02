@@ -1,0 +1,204 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import info from "@/data/info.json";
+
+const b = info.business;
+
+interface Section {
+  id: string;
+  title: string;
+  paragraphs?: string[];
+  items?: string[];
+  after?: string[];
+}
+
+const sections: Section[] = [
+  {
+    id: "about",
+    title: "1. About us",
+    paragraphs: [
+      `These terms apply to all web development, web design, hosting and related technical services (the "Services") provided by ${b.owner} trading as ${b.tradingName} ("we", "us"), a sole proprietor based in ${b.country}, to any person or business that engages us (the "Client").`,
+      "By accepting a quote, paying an invoice or otherwise instructing us to start work, the Client agrees to these terms.",
+    ],
+  },
+  {
+    id: "services",
+    title: "2. Services and scope",
+    paragraphs: [
+      "Every project begins with a written quote or proposal that describes the deliverables, timeline, price and payment schedule. That document, together with these terms, forms the agreement between us.",
+      "Work outside the agreed scope is quoted separately and only starts once the Client has accepted the additional quote.",
+    ],
+  },
+  {
+    id: "payment",
+    title: "3. Pricing and payment",
+    items: [
+      `All prices are quoted and charged in South African Rand (${b.currency}) unless the quote states otherwise.`,
+      "Projects are normally invoiced as a deposit before work starts, followed by milestone and final invoices as set out in the quote.",
+      `Online card payments are processed securely by ${b.gateway}. We do not see or store the Client's card details. EFT payments are also accepted where agreed.`,
+      "Invoices are payable within 7 days of issue unless the quote says otherwise. We may pause work on, or withhold delivery of, a project while an invoice is overdue.",
+    ],
+  },
+  {
+    id: "delivery",
+    title: "4. Delivery policy",
+    paragraphs: [
+      "The Services are digital. No physical goods are shipped. Delivery means handing over the agreed deliverables to the Client in one or more of the following ways, as set out in the quote:",
+    ],
+    items: [
+      "deploying the website or application to the agreed hosting environment and giving the Client access to it;",
+      "giving the Client access to the source code repository, or sending the files through a secure download link or email;",
+      "handing over administrator accounts and relevant documentation.",
+    ],
+    after: [
+      "Delivery dates in the quote are estimates and depend on the Client supplying content, assets, feedback and approvals on time. Delays caused by the Client move the delivery dates accordingly.",
+      "Once a milestone or the final project is delivered, the Client has 7 days to review it and report any material deviation from the agreed scope. If no issues are reported in that time, the deliverables are treated as accepted. Each quote includes a set number of revision rounds; further revisions are quoted separately.",
+      "Ownership of the final deliverables passes to the Client once all invoices for the project have been paid in full.",
+    ],
+  },
+  {
+    id: "refunds",
+    title: "5. Refund and cancellation policy",
+    paragraphs: [
+      "Because the Services are custom digital work that starts as soon as a deposit is received, refunds are handled per milestone:",
+    ],
+    items: [
+      "Deposit: the deposit secures our time and covers work started, so it is non-refundable once work has begun.",
+      "Delivered milestones: milestones that have been delivered and accepted (or are deemed accepted under clause 4) are non-refundable.",
+      "Cancellation before delivery: if the Client cancels, we refund any amount paid for milestones on which work has not yet started. Work already done on the current milestone is charged pro rata and deducted from the refund.",
+      "Work that does not match the agreed scope: if a deliverable materially differs from the agreed scope, we will correct it at no extra charge. If we cannot correct it within a reasonable time, the Client is entitled to a refund of the affected milestone.",
+      "Cancellation by us: if we are unable to complete a project, the Client is refunded for all milestones that were paid for but not delivered.",
+    ],
+    after: [
+      `To request a refund, email ${b.email} with the invoice number and the reason. We respond within 5 business days. Approved refunds are paid back to the original payment method (or by EFT) within 10 business days of approval.`,
+      "Before opening a payment dispute or chargeback with a bank or card provider, we ask the Client to contact us first so that we can resolve the issue directly. Nothing in this policy limits the Client's rights under the Consumer Protection Act 68 of 2008 or other applicable law.",
+    ],
+  },
+  {
+    id: "client",
+    title: "6. Client responsibilities and intellectual property",
+    items: [
+      "The Client must supply accurate content, assets and information, and confirms they have the right to use anything they provide (text, images, logos, trademarks, etc.).",
+      "Third-party components, fonts, libraries and stock assets remain subject to their own licences. We will tell the Client about any licence costs that apply.",
+      "Unless the Client objects in writing, we may show the finished work, and describe it, in our portfolio.",
+      "We keep the right to reuse general know-how, tools and generic code that is not specific to the Client's business.",
+    ],
+  },
+  {
+    id: "warranty",
+    title: "7. Support, warranty and liability",
+    items: [
+      "We fix bugs in delivered work that were part of the agreed scope for 30 days after final delivery at no charge.",
+      "Ongoing hosting, maintenance, updates and support are separate services and are only provided where they are specifically agreed and invoiced.",
+      "The Services are provided with reasonable skill and care. We cannot guarantee that a website will be uninterrupted or error-free, or achieve particular search ranking, traffic or sales results.",
+      "To the fullest extent permitted by law, our total liability for any claim relating to a project is limited to the amount the Client paid us for that project, and we are not liable for indirect or consequential loss such as lost profits.",
+    ],
+  },
+  {
+    id: "privacy",
+    title: "8. Privacy and personal information",
+    paragraphs: [
+      "We handle personal information in line with the Protection of Personal Information Act 4 of 2013 (POPIA).",
+    ],
+    items: [
+      "What we collect: the Client's name, email address, phone number, billing details and the information needed to carry out the project.",
+      `Why: to quote, deliver and invoice the Services, to communicate about the project, and to meet our legal and tax obligations.`,
+      `Payments: card payments are handled by ${b.gateway}, which acts as an operator under its own privacy policy. We do not receive or store full card numbers.`,
+      "Sharing: we do not sell personal information. We only share it with service providers needed to deliver the project (such as hosting, email and payment providers) or where the law requires.",
+      "Retention: we keep records for as long as needed for the project and for legal, tax and accounting purposes.",
+      `Your rights: you may ask to see, correct or delete your personal information by emailing ${b.email}. If you are unhappy with how it is handled, you may also complain to the Information Regulator of South Africa.`,
+    ],
+  },
+  {
+    id: "law",
+    title: "9. Governing law and disputes",
+    paragraphs: [
+      `These terms are governed by the laws of the Republic of ${b.country}. If a dispute arises, we will first try to settle it informally. If that fails, it may be taken to the courts of ${b.country} that have jurisdiction.`,
+    ],
+  },
+  {
+    id: "changes",
+    title: "10. Changes to these terms",
+    paragraphs: [
+      `We may update these terms from time to time. The version published on this page when a quote is accepted applies to that project. This version was last updated on ${b.lastUpdated}.`,
+    ],
+  },
+];
+---
+
+<Layout
+  title="Terms & Conditions | MSCode"
+  description="Terms and conditions, delivery policy and refund policy for freelance services provided by MSCode."
+>
+  <main class="max-w-5xl mx-auto space-y-8 md:mt-36 my-8">
+    <div class="mb-12">
+      <h1 class="text-5xl md:text-6xl font-bold text-[var(--white)] mb-4">
+        Terms & Conditions
+      </h1>
+      <p class="text-xl text-[var(--white-icon)]">
+        Including our delivery policy and refund policy. Last updated {b.lastUpdated}.
+      </p>
+    </div>
+
+    <nav
+      aria-label="Contents"
+      class="bg-[#1414149c] border border-[var(--white-icon-tr)] rounded-xl p-5"
+    >
+      <p class="text-sm text-[var(--sec)] mb-3">Contents</p>
+      <ul class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-2 text-sm md:text-base">
+        {sections.map((s) => (
+          <li>
+            <a
+              href={`#${s.id}`}
+              class="text-[var(--white-icon)] hover:text-[var(--white)] transition duration-300 ease-in-out"
+            >
+              {s.title}
+            </a>
+          </li>
+        ))}
+        <li>
+          <a
+            href="#contact"
+            class="text-[var(--white-icon)] hover:text-[var(--white)] transition duration-300 ease-in-out"
+          >
+            11. Contact us
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    {sections.map((s) => (
+      <section id={s.id} class="scroll-mt-8 bg-[#1414149c] border border-[var(--white-icon-tr)] rounded-xl p-6">
+        <h2 class="text-2xl md:text-3xl font-semibold text-[var(--white)] mb-4">{s.title}</h2>
+        <div class="space-y-4 text-[var(--white-icon)] text-sm md:text-base">
+          {s.paragraphs?.map((p) => <p>{p}</p>)}
+          {s.items && (
+            <ul class="list-disc list-outside pl-5 space-y-2">
+              {s.items.map((li) => <li>{li}</li>)}
+            </ul>
+          )}
+          {s.after?.map((p) => <p>{p}</p>)}
+        </div>
+      </section>
+    ))}
+
+    <section id="contact" class="scroll-mt-8 bg-[#1414149c] border border-[var(--white-icon-tr)] rounded-xl p-6">
+      <h2 class="text-2xl md:text-3xl font-semibold text-[var(--white)] mb-4">11. Contact us</h2>
+      <div class="space-y-2 text-[var(--white-icon)] text-sm md:text-base">
+        <p>
+          {b.owner} t/a {b.tradingName}
+        </p>
+        <p>
+          Email:{" "}
+          <a
+            href={`mailto:${b.email}`}
+            class="text-[var(--sec)] hover:opacity-90 underline underline-offset-4"
+          >
+            {b.email}
+          </a>
+        </p>
+        <p>Country: {b.country}</p>
+      </div>
+    </section>
+  </main>
+</Layout>

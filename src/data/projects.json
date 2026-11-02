@@ -22,12 +22,12 @@
         "highlight": true
     },
     {
-        "title": "Calico Catalog",
-        "description": "A smart shopping list app that makes grocery shopping a breeze.",
+        "title": "BITS",
+        "description": "An Android app that combines a smart shopping list with an expense tracker, capturing bank spend automatically to replace a monthly budget spreadsheet.",
         "startYear": 2025,
         "tags": [
-            "php",
-            "javascript"
+            "typescript",
+            "react-native"
         ],
         "status": "Active"
     },

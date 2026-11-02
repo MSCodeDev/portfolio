@@ -2,7 +2,17 @@
 import { ClientRouter } from "astro:transitions";
 import Nav from "@/components/nav.astro";
 import Footer from "@/components/footer.astro";
+import "@/styles/global.css";
 import info from "@/data/info.json";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title = info.meta.title, description = info.meta.description } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const ogImage = new URL(info.meta.ogImage, Astro.site);
 ---
 
 <!doctype html>
@@ -10,19 +20,21 @@ import info from "@/data/info.json";
   <head>
     <ClientRouter />
     <meta charset="UTF-8" />
-    <meta name="description" content={info.meta.description} />
+    <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/png" href="/favicon.png" />
-    <meta property="og:title" content={info.meta.title} />
-    <meta property="og:description" content={info.meta.description} />
-    <meta property="og:image" content={info.meta.ogImage} />
-    <meta property="og:url" content="/" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage.href} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content={ogImage.href} />
+    <meta property="og:url" content={canonical.href} />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content={info.meta.ogSiteName} />
 
-    <title>{info.meta.title}</title>
+    <title>{title}</title>
   </head>
-  <body class="bg-[--background] sm:px-28 lg:px-20 px-9 relative overflow-x-hidden" transition:persist style="view-transition-name: none;">
+  <body class="bg-(--background) sm:px-28 lg:px-20 px-9 relative overflow-x-hidden" transition:persist style="view-transition-name: none;">
     <Nav />
     <div class="contours-top" transition:persist></div>
     <div style="view-transition-name: page-content;">
@@ -56,9 +68,6 @@ import info from "@/data/info.json";
       "JetBrains Mono",
       ui-monospace,
       monospace;
-    box-sizing: border-box;
-    padding: 0;
-    margin: 0;
   }
 
   *::selection {
@@ -138,6 +147,20 @@ import info from "@/data/info.json";
   }
 
   ::view-transition-new(root) {
+    animation: none;
+  }
+
+  /* Keep the nav on its own layer so the fading page content never draws over it */
+  ::view-transition-group(site-nav) {
+    animation: none;
+    z-index: 10;
+  }
+
+  ::view-transition-old(site-nav) {
+    display: none;
+  }
+
+  ::view-transition-new(site-nav) {
     animation: none;
   }
 

@@ -16,6 +16,14 @@
         ]
     },
     {
+        "type": "experience",
+        "title": "Freelance Developer",
+        "subtitle": "MSCode",
+        "year": "2025 - Present",
+        "icon": "heroicons:briefcase",
+        "shortDescription": "Building websites and web applications for small businesses and individuals, from design and development through to hosting and maintenance."
+    },
+    {
         "type": "award",
         "title": "Avochoc Customer Satisfaction",
         "year": "2025",
