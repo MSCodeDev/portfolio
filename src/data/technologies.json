@@ -45,8 +45,8 @@
         "color": "#3776AB"
     },
     {
-        "name": "MariaDB",
-        "icon": "simple-icons:mariadb",
+        "name": "MySQL",
+        "icon": "simple-icons:mysql",
         "color": "#4479A1"
     },
     {
@@ -90,8 +90,8 @@
         "color": "#21759B"
     },
     {
-        "name": "Copilot",
-        "icon": "simple-icons:githubcopilot",
-        "color": "#FFFFFF"
+        "name": "Claude",
+        "icon": "simple-icons:claude",
+        "color": "#D97757"
     }
 ]

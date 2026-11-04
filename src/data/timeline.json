@@ -3,95 +3,95 @@
         "type": "experience",
         "title": "Intermediate Software Engineer",
         "subtitle": "Avochoc",
-        "year": "2025 - Present",
+        "year": "2025 to Present",
         "icon": "heroicons:trophy",
         "homepage": true,
-        "shortDescription": "Leading development of new and existing applications.",
+        "shortDescription": "Head developer of Payway, tech lead on Petro-Logistics and maintainer of client educational platforms.",
         "items": [
-            "Team lead on a fleet fuel loyalty program website for fleet management, oversight, and fuel rebates.",
-            "Selected to lead the development of a fleet fuel loyalty program for fleet management, oversight, and fuel rebates serving business clients.",
-            "Lead the full rebuild of the CSIR (Council for Scientific and Industrial Research) website with over 300 unique page designs.",
-            "Head of all maintenance projects — including a Maths app for NMU and a learner reading Unity-based app and admin portal.",
-            "Performed an infrastructure analysis of a fuel tanker tracking system and implemented a reliable backup solution to safeguard operational data."
+            "Head developer of Payway, a South African taxi industry fuel rebate platform serving over 850 drivers and 1,700 vehicles.",
+            "Tech lead for Petro-Logistics, a fuel tanker tracking system running on Swiss virtual and on-premises servers, covering an infrastructure audit, company-wide backups and maintenance of existing PHP, .NET and Go systems.",
+            "Team lead on the full rebuild of the South African CSIR website from Drupal 7 to 10, with over 300 unique Bootstrap page designs, over 5,000 records migrated, Entra single sign-on and AI text-to-speech via ElevenLabs.",
+            "Head of maintenance for the Time2Read and MobiTutorZA educational platforms used by over 5,000 learners.",
+            "Information Security Officer for 40 employees, maintaining ISO 27001 certification and managing risk and incident response.",
+            "Member of Avochoc's AI Taskforce, evaluating tools, advising on policy and running company-wide training sessions."
         ]
     },
     {
-        "type": "experience",
-        "title": "Freelance Developer",
-        "subtitle": "MSCode",
-        "year": "2025 - Present",
-        "icon": "heroicons:briefcase",
-        "shortDescription": "Building websites and web applications for small businesses and individuals, from design and development through to hosting and maintenance."
-    },
-    {
-        "type": "award",
-        "title": "Avochoc Customer Satisfaction",
-        "year": "2025",
-        "icon": "heroicons:presentation-chart-bar",
-        "homepage": true
-    },
-    {
         "type": "education",
-        "title": "Certifications",
+        "title": "Cloud Courses",
         "subtitle": "Cybrary",
         "year": "2024",
         "icon": "heroicons:clipboard-document-list-20-solid",
         "items": [
-            "Microsoft Azure Fundamentals",
-            "Amazon AWS Cloud Practitioner"
+            "Microsoft Azure Fundamentals course",
+            "AWS Cloud Practitioner course"
         ]
     },
     {
         "type": "education",
         "title": "Bachelor of Science in Informatics",
         "subtitle": "University of South Africa",
-        "year": "2019 - 2023",
+        "year": "2019 to 2023",
         "icon": "heroicons:academic-cap-20-solid",
         "items": [
-            "Programming Coursework: Intro. to Programming, Visual Programming, Human-Computer Interaction, Databases, Advanced Systems Development, Software Project Management, Structured Systems Analysis",
-            "Management Coursework: General Management, Business Management, Small & Global Business Management, Strategic Planning, Implementation, & Control, Financial Accounting, Statistics"
-        ]
+            "Programming Coursework: Introduction to Programming, Visual Programming, Human-Computer Interaction, Databases, Advanced Systems Development, Software Project Management, Structured Systems Analysis",
+            "Management Coursework: General Management, Business Management, Small and Global Business Management, Strategic Planning, Implementation and Control, Financial Accounting, Statistics"
+        ],
+        "resumeItems": [],
+        "resumeFirst": true
     },
     {
         "type": "award",
         "title": "MTN App of the Year",
         "year": "2018",
         "icon": "heroicons:trophy",
-        "homepage": true
+        "homepage": true,
+        "subtitle": "Best Gaming Solution | ACGL",
+        "resumeFirst": true
     },
     {
         "type": "experience",
-        "title": "Senior Web Developer & Platforms Manager",
+        "title": "Senior Web Developer and Platforms Manager",
         "subtitle": "ACGL",
-        "year": "2016 - 2024",
+        "year": "2016 to 2025",
         "icon": "heroicons:briefcase-solid",
         "homepage": true,
-        "shortDescription": "Designed and developed 6 websites and 3 apps, attracting over 150k registered users with 1m+ annual visits.",
+        "shortDescription": "Designed and developed 6 websites and 3 apps, attracting over 150,000 registered users and over 1 million annual visits.",
         "items": [
-            "Designed and built 6 websites and 3 apps from the ground up, growing the platform to 150k+ registered users and 1M+ annual visits.",
-            "Engineered a tournament management system with gamification, wallets, and live chat — scaling to 5k+ tournaments, and 40k+ teams.",
-            "Scaled infrastructure reliability for 5 VPS instances and 2 bare-metal servers, delivering 99% uptime over 3 years.",
-            "Directed 100+ multi-team projects, featuring collaborations with brands such as BMW, Burger King, MTN, Radisson, Red Bull, and Xiaomi.",
-            "Selected to lead the support team, resolving website and tournament tickets for 150k+ users."
+            "Designed and built 6 websites and 3 apps from the ground up, including the PWA platform that won MTN App of the Year, growing it to over 150,000 registered users and over 1 million annual visits.",
+            "Engineered a tournament management system with gamification, loyalty points, wallets and live chat, scaling to over 7,000 tournaments and 50,000 teams, with over R2.5 million in cash awarded.",
+            "Managed 5 virtual and 2 bare-metal servers, cutting annual downtime from several days to a few hours.",
+            "Directed over 100 multi-team projects with brands including BMW, Burger King, MTN, Radisson, Red Bull and Samsung.",
+            "Led a live support team of up to 5, resolving roughly 1,500 annual website and tournament tickets within an hour."
         ]
     },
     {
         "type": "experience",
         "title": "ICT Teacher",
-        "subtitle": "Dr. Viljoen Primary School & Piet Retief Primary School",
-        "year": "2016 - 2018",
+        "subtitle": "Dr Viljoen and Piet Retief Primary Schools",
+        "year": "2016 to 2018",
         "icon": "heroicons:briefcase-solid",
         "homepage": true,
-        "shortDescription": "Oversight of school infrastructure & Taught ICT classes for students in Grade R through to Grade 7.",
+        "shortDescription": "Ran IT infrastructure at two primary schools and taught ICT from Grade R to Grade 7.",
         "items": [
-            "Overhauled the school network of 60+ devices — modernized 30+ PCs, built 10+ new machines, and installed 5 WiFi access points across campus, improving reliability for staff and students.",
-            "Taught ICT classes from Grade R through Grade 7, educating 1,500+ students over 3 years with a gamified curriculum covering fundamental computer skills and digital literacy."
+            "Overhauled a 60-device school network with enterprise routers, full-coverage Wi-Fi, 30 refurbished computers and 10 brand new computers, improving reliability for staff and learners.",
+            "Taught gamified computer skills and digital literacy to over 1,500 learners from Grade R to Grade 7 across 3 years."
         ]
     },
     {
-        "type": "award",
-        "title": "FNB Leadership Award",
-        "year": "2010",
-        "icon": "heroicons:trophy"
+        "type": "experience",
+        "title": "Freelance Developer",
+        "subtitle": "MSCode",
+        "year": "2014 to Present",
+        "icon": "heroicons:briefcase",
+        "shortDescription": "Building websites and web applications for small businesses and individuals, from design and development through to hosting and maintenance.",
+        "items": [
+            "Delivered over 15 websites for small businesses and individuals, covering design, development, hosting and maintenance.",
+            "Cut page load times by 60% for a long-running esports blog through optimisation and managed hosting.",
+            "Built and hosted a learner management platform for a primary school, tracking fees, discounts and bursaries."
+        ],
+        "resumeItems": [
+            "Delivered over 15 websites for small businesses and individuals, covering design, development, hosting and maintenance."
+        ]
     }
 ]

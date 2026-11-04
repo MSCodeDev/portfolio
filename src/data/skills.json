@@ -4,27 +4,27 @@
             "title": "Web Development",
             "icon": "heroicons:computer-desktop-20-solid",
             "items": [
-                "Single Page Applications & CMS",
+                "Single Page Applications and CMS",
                 "Progressive Web Apps",
-                "Full-stack, Microservices & Monoliths"
+                "Full-stack, Microservices and Monoliths"
             ]
         },
         {
             "title": "Web Design",
             "icon": "heroicons:paint-brush-20-solid",
             "items": [
-                "Fully Responsive designs",
-                "UI design with Figma & Canva",
-                "UX research & improvements"
+                "Fully responsive designs",
+                "UI design with Figma and Canva",
+                "UX research and improvements"
             ]
         },
         {
-            "title": "TechOps",
+            "title": "DevOps and Cloud",
             "icon": "heroicons:server-stack",
             "items": [
-                "Cloud & Dedicated server management",
-                "Serverless & Dedicated server deployment",
-                "CI/CD pipelines & Infrastructure as Code"
+                "Cloud and dedicated server management",
+                "Serverless and Docker deployment",
+                "CI/CD pipelines and Infrastructure as Code"
             ]
         }
     ],
@@ -36,12 +36,12 @@
                 "PHP",
                 "JavaScript",
                 "TypeScript",
-                "CSS & HTML",
+                "CSS and HTML",
                 "SQL",
                 "Python",
+                "C#",
                 "C++",
-                "Swift",
-                "Kotlin"
+                "Go"
             ]
         },
         {
@@ -49,14 +49,19 @@
             "icon": "heroicons:squares-2x2-20-solid",
             "items": [
                 "React",
+                "React Native",
                 "Angular",
+                "Vue",
                 "Next.js",
+                "Nuxt",
+                "SvelteKit",
                 "Astro",
                 "Vite",
                 "jQuery",
                 "Tailwind CSS",
                 "Bootstrap"
-            ]
+            ],
+            "resumeGroup": "Frameworks"
         },
         {
             "title": "Backend",
@@ -64,12 +69,16 @@
             "items": [
                 "Laravel",
                 "Symfony",
+                "Node.js",
+                "Express",
                 "NestJS",
                 "FastAPI",
+                ".NET",
+                "ASP.NET Core",
                 "WordPress",
-                "Drupal",
-                "Composer"
-            ]
+                "Drupal"
+            ],
+            "resumeGroup": "Frameworks"
         },
         {
             "title": "Databases",
@@ -77,40 +86,61 @@
             "items": [
                 "MySQL",
                 "PostgreSQL",
-                "MariaDB",
-                "SQLite3"
+                "SQL Server",
+                "SQLite3",
+                "Supabase",
+                "Prisma",
+                "Drizzle",
+                "Entity Framework"
             ]
         },
         {
-            "title": "DevOps & Cloud",
+            "title": "DevOps and Cloud",
             "icon": "heroicons:cog-6-tooth-20-solid",
             "items": [
                 "AWS",
                 "Azure",
+                "Vercel",
+                "Cloudflare",
                 "Docker",
+                "Linux",
                 "Ansible",
-                "GitHub Actions",
-                "Azure Pipelines",
-                "AWS CodeBuild"
+                "GitHub",
+                "GitLab"
             ]
         },
         {
-            "title": "Tools & Other",
+            "title": "Tools and Other",
             "icon": "heroicons:wrench-screwdriver-20-solid",
             "items": [
                 "Git",
-                "GitHub",
-                "GitLab",
+                "Jira",
+                "Composer",
+                "Bash",
                 "OAuth",
+                "REST APIs",
+                "WebSockets",
                 "Entra",
                 "SAML",
+                "FleetDM",
+                "Vaultwarden",
                 "PHPUnit",
+                "Jest",
+                "Vitest",
+                "Playwright",
                 "Power BI",
                 "Google Analytics",
                 "ElevenLabs",
-                "Whisper",
+                "Claude",
                 "VS Code"
             ]
         }
+    ],
+    "proficiencies": [
+        "Project Management",
+        "Team Leadership",
+        "Agile and Scrum",
+        "User Experience",
+        "Information Security"
     ]
 }

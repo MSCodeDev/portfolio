@@ -3,11 +3,11 @@
     "firstName": "Mitch",
     "lastName": "Stroebel",
     "greeting": "Hi there! I am",
-    "role": "full-stack developer",
-    "bio": "Leveraging a decade of experience as a {role}, I excel at crafting web applications, and I am dedicated to enhancing website performance, engagement, and reliability.",
+    "role": "full-stack software engineer",
+    "bio": "{role} with over a decade of experience building and running web platforms. Won MTN App of the Year for the ACGL esports platform, and led projects with brands such as Toyota and Curro. Focused on user experience, reliability and the infrastructure behind it all.",
     "meta": {
         "title": "Mitch Stroebel",
-        "description": "Mitch Stroebel is a full-stack developer with a decade of experience building fast, reliable web applications, and takes on freelance web projects through MSCode.",
+        "description": "Mitch Stroebel is a full-stack software engineer with over a decade of experience. Available for freelance web development, design and hosting through MSCode.",
         "ogSiteName": "MSCode",
         "ogImage": "/meta.png"
     },
@@ -40,22 +40,22 @@
         },
         "resume": {
             "label": "Professional Background",
-            "title": "Experience & Awards",
+            "title": "Experience and Awards",
             "viewAllText": "View Resume"
         }
     },
     "freelance": {
         "label": "Work with me",
-        "title": "Freelance Projects",
-        "description": "From business websites and web apps to hosting and deployment, I can take an idea from first sketch to a live, maintained product.",
+        "title": "Freelance Services",
+        "description": "Whether it's a business website or a custom web app, I look after the whole journey: design, development, hosting and deployment, then the ongoing maintenance that keeps it fast and reliable.",
         "services": [
             "Web Development",
             "Web Design",
-            "Hosting & TechOps"
+            "Hosting, DevOps and Cloud"
         ],
         "ctaText": "Get in touch",
         "ctaHref": "mailto:mitch@mscode.co.za",
-        "termsText": "Terms & Conditions"
+        "termsText": "Terms and Conditions"
     },
     "business": {
         "tradingName": "MSCode",
@@ -65,5 +65,12 @@
         "currency": "ZAR",
         "gateway": "PayFast",
         "lastUpdated": "2 November 2026"
+    },
+    "website": "https://mscode.co.za",
+    "resume": {
+        "headline": "Full-Stack Software Engineer | Angular, React and TypeScript | .NET, C# and PHP | DevOps and Cloud",
+        "interests": "Gaming, hiking, collecting books, open-source software and a homelab for hands-on learning, privacy and testing.",
+        "location": "Eastern Cape, South Africa",
+        "availability": "Open to remote"
     }
 }
