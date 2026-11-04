@@ -8,6 +8,9 @@ const badgeColors: Record<string, string> = {
   award: "bg-amber-400/15 text-amber-400",
   education: "bg-blue-400/15 text-blue-400",
 };
+
+// The short description only stands in for entries that have no bullets of their own
+const hasItems = (entry: { items?: string[] }) => (entry.items?.length ?? 0) > 0;
 ---
 
 <Layout description="Mitch Stroebel's resume: work experience, skills, education and awards.">
@@ -18,7 +21,7 @@ const badgeColors: Record<string, string> = {
           Resume
         </h1>
         <p class="text-xl text-[var(--white-icon)]">
-          My work experience, skills, education & awards.
+          My work experience, skills, education and awards.
         </p>
       </div>
       <a 
@@ -52,9 +55,11 @@ const badgeColors: Record<string, string> = {
                 )}
                 <span class="text-sm text-[var(--white-icon)] shrink-0">{item.year}</span>
               </div>
-              <p class={`text-lg mb-${item.type === 'award' ? '2' : '4'} ${item.type === 'award' ? 'text-amber-400' : 'text-[var(--sec)]'}`}>
-                {item.subtitle}
-              </p>
+              {item.subtitle && (
+                <p class={`text-lg mb-${item.type === 'award' ? '2' : '4'} ${item.type === 'award' ? 'text-amber-400' : 'text-[var(--sec)]'}`}>
+                  {item.subtitle}
+                </p>
+              )}
 
               {item.items && (
                 <ul class="list-disc list-inside space-y-2 text-[var(--white-icon)] text-sm md:text-base">
@@ -62,7 +67,7 @@ const badgeColors: Record<string, string> = {
                 </ul>
               )}
 
-              {item.shortDescription && (
+              {item.shortDescription && !hasItems(item) && (
                 <p class="text-[var(--white-icon)] text-sm md:text-base">{item.shortDescription}</p>
               )}
             </div>
@@ -74,7 +79,7 @@ const badgeColors: Record<string, string> = {
     <!-- Skills Section -->
     <section id="skills">
       <h2 class="text-4xl font-bold text-[var(--white)] mb-8 pb-4">
-        Skills & Stacks
+        Skills and Stacks
       </h2>
       
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">

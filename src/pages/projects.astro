@@ -1,6 +1,7 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import projects from "@/data/projects.json";
+import { tagLabel, statusColor } from "@/utils/tags";
 
 // Get all projects and sort by startYear (desc), then title (asc)
 const sortedProjects = [...projects].sort((a, b) => {
@@ -9,21 +10,13 @@ const sortedProjects = [...projects].sort((a, b) => {
   return a.title.localeCompare(b.title);
 });
 
-const allTags = [...new Set(
-  sortedProjects.flatMap((p) => p.tags ?? [])
-)].sort();
-
-
-function statusColor(status: string): string {
-  const s = status.toLowerCase();
-  if (s.includes('dep'))
-    return 'border-blue-500/50 bg-blue-500/10 text-blue-400';
-  if (s.includes('arch'))
-    return 'border-yellow-500/50 bg-yellow-500/10 text-yellow-400';
-  if (s.includes('contri'))
-    return 'border-orange-500/50 bg-orange-500/10 text-orange-400';
-  return 'border-green-500/50 bg-green-500/10 text-green-400';
-}
+// Tags ordered by how many projects use them (then A to Z), with the count shown on each chip
+const tagCounts = new Map<string, number>();
+for (const project of sortedProjects) for (const tag of project.tags ?? []) tagCounts.set(tag, (tagCounts.get(tag) ?? 0) + 1);
+const allTags = [...tagCounts.entries()]
+  .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+  .map(([tag, count]) => ({ tag, count }));
+const VISIBLE_TAGS = 6;
 ---
 
 <Layout description="Websites, web applications and apps built by Mitch Stroebel, filterable by technology.">
@@ -39,45 +32,51 @@ function statusColor(status: string): string {
     </div>
 
     <!-- Tag filter -->
-    <div class="flex flex-wrap gap-3 mb-8" id="tag-filters">
+    <div class="flex flex-wrap gap-2 md:gap-3 mb-8" id="tag-filters">
       <label class="tag-filter">
         <input type="radio" name="tag" value="" class="sr-only" checked />
-        <span class="cursor-pointer text-sm px-3 py-1.5 rounded-full border border-[var(--sec)] bg-[var(--sec)] text-[var(--background)] transition-colors">All</span>
+        <span class="inline-flex items-center gap-1.5 cursor-pointer text-sm px-3 py-1.5 rounded-full border border-[var(--white-icon-tr)] text-[var(--white-icon)] hover:border-[var(--sec)] hover:text-[var(--sec)] transition-colors">All <span class="count text-xs opacity-60">{sortedProjects.length}</span></span>
       </label>
-      {allTags.map((tag) => (
-        <label class="tag-filter">
+      {allTags.map(({ tag, count }, i) => (
+        <label class:list={["tag-filter", i >= VISIBLE_TAGS && "extra-tag hidden"]}>
           <input type="radio" name="tag" value={tag} class="sr-only" />
-          <span class="cursor-pointer text-sm px-3 py-1.5 rounded-full border border-[var(--white-icon-tr)] text-[var(--white-icon)] hover:border-[var(--sec)] hover:text-[var(--sec)] transition-colors">{tag}</span>
+          <span class="inline-flex items-center gap-1.5 cursor-pointer text-sm px-3 py-1.5 rounded-full border border-[var(--white-icon-tr)] text-[var(--white-icon)] hover:border-[var(--sec)] hover:text-[var(--sec)] transition-colors">{tagLabel(tag)} <span class="count text-xs opacity-60">{count}</span></span>
         </label>
       ))}
+      {allTags.length > VISIBLE_TAGS && (
+        <button type="button" id="tag-more" class="text-sm px-3 py-1.5 rounded-full border border-dashed border-[var(--white-icon-tr)] text-[var(--white-icon)] hover:border-[var(--sec)] hover:text-[var(--sec)] transition-colors cursor-pointer" data-more={`+${allTags.length - VISIBLE_TAGS} more`}>
+          +{allTags.length - VISIBLE_TAGS} more
+        </button>
+      )}
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
       {sortedProjects.map((project) => (
-        <article data-tags={JSON.stringify(project.tags ?? [])} class={`tilt-card bg-[#1414149c] border border-[var(--white-icon-tr)] rounded-lg overflow-hidden flex flex-col`}>
+        <article data-tags={JSON.stringify(project.tags ?? [])} class="tilt-card bg-[#1414149c] border border-[var(--white-icon-tr)] rounded-lg overflow-hidden flex flex-col">
           <div class="p-6 flex flex-col flex-1">
-            <div class="flex items-start justify-between gap-4 mb-2">
-              <h2 class={`text-2xl font-bold ${project.highlight ? 'text-purple-400' : 'text-[var(--white)]'}`}>
-                {project.title}
-              </h2>
-              <span class={`text-sm shrink-0 pt-1 ${project.highlight ? 'text-purple-400' : 'text-[var(--white-icon)]'}`}>
-                {project.startYear}{project.endYear ? `–${project.endYear}` : ''}
+            <div class="flex items-center justify-between gap-4 mb-3">
+              <span class={`text-xs px-2.5 py-1 border rounded-full ${statusColor(project.status)}`}>
+                {project.status}
+              </span>
+              <span class={`text-sm shrink-0 ${project.highlight ? 'text-purple-400' : 'text-[var(--white-icon)]'}`}>
+                {project.startYear}{project.endYear ? ` to ${project.endYear}` : ''}
               </span>
             </div>
 
-            <p class={`mb-4 line-clamp-3 flex-1 ${project.highlight ? 'text-purple-400/70' : 'text-[var(--white-icon)]'}`}>
+            <h2 class={`text-2xl font-bold mb-2 ${project.highlight ? 'text-purple-400' : 'text-[var(--white)]'}`}>
+              {project.title}
+            </h2>
+
+            <p class={`mb-4 line-clamp-5 flex-1 ${project.highlight ? 'text-purple-400/70' : 'text-[var(--white-icon)]'}`}>
               {project.description}
             </p>
 
             <div class="flex flex-wrap items-center gap-2 mt-auto">
               {project.tags && project.tags.map((tag: string) => (
-                <span class={`text-xs px-2 py-1 rounded-sm ${project.highlight ? 'bg-purple-500/10 text-purple-400' : 'bg-[var(--white-icon-tr)] text-[var(--white-icon)]'}`}>
-                  #{tag}
+                <span class={`text-[0.8rem] px-2.5 py-1 rounded-full border ${project.highlight ? 'border-purple-500/30 bg-purple-500/10 text-purple-400' : 'border-[var(--white-icon-tr)] text-[var(--white-icon)]'}`}>
+                  {tagLabel(tag)}
                 </span>
               ))}
-              <span class={`ml-auto text-xs px-2 py-1 border rounded-full ${statusColor(project.status)}`}>
-                {project.status}
-              </span>
             </div>
           </div>
         </article>
@@ -96,9 +95,9 @@ function statusColor(status: string): string {
 </Layout>
 
 <style>
-  .line-clamp-3 {
+  .line-clamp-5 {
     display: -webkit-box;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 5;
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
@@ -112,6 +111,7 @@ function statusColor(status: string): string {
 <script>
   const filters = document.getElementById('tag-filters');
   const grid = document.querySelector('.grid');
+  const moreButton = document.getElementById('tag-more');
 
   filters?.addEventListener('change', (e) => {
     const selected = (e.target as HTMLInputElement).value;
@@ -119,5 +119,12 @@ function statusColor(status: string): string {
       const tags: string[] = JSON.parse(card.dataset.tags ?? '[]');
       card.style.display = (!selected || tags.includes(selected)) ? '' : 'none';
     });
+  });
+
+  moreButton?.addEventListener('click', () => {
+    const extras = filters?.querySelectorAll<HTMLElement>('.extra-tag') ?? [];
+    const opening = extras[0]?.classList.contains('hidden');
+    extras.forEach((el) => el.classList.toggle('hidden', !opening));
+    moreButton.textContent = opening ? 'Show fewer' : moreButton.dataset.more ?? '';
   });
 </script>
