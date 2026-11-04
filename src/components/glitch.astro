@@ -39,6 +39,7 @@ const {
     private glitchSpeed: number;
     private smooth: boolean;
     private animationId: number | null = null;
+    private visible = false;
     private letters: { char: string; color: string; targetColor: string; colorProgress: number }[] = [];
     private grid = { columns: 0, rows: 0 };
     private lastGlitchTime = Date.now();
@@ -55,15 +56,26 @@ const {
       this.smooth = container.dataset.smooth === "true";
 
       this.resizeCanvas();
-      this.animate();
+
+      // Only animate while the canvas is on screen, so it costs nothing at load when it sits below the fold
+      if ("IntersectionObserver" in window) {
+        new IntersectionObserver((entries) => {
+          this.visible = entries.some((entry) => entry.isIntersecting);
+          if (this.visible) this.start();
+          else this.stop();
+        }).observe(container);
+      } else {
+        this.visible = true;
+        this.start();
+      }
 
       let resizeTimeout: ReturnType<typeof setTimeout>;
       window.addEventListener("resize", () => {
         clearTimeout(resizeTimeout);
         resizeTimeout = setTimeout(() => {
-          if (this.animationId) cancelAnimationFrame(this.animationId);
+          this.stop();
           this.resizeCanvas();
-          this.animate();
+          if (this.visible) this.start();
         }, 100);
       });
     }
@@ -177,8 +189,17 @@ const {
       this.animationId = requestAnimationFrame(this.animate);
     };
 
+    private start() {
+      if (this.animationId === null) this.animationId = requestAnimationFrame(this.animate);
+    }
+
+    private stop() {
+      if (this.animationId !== null) cancelAnimationFrame(this.animationId);
+      this.animationId = null;
+    }
+
     destroy() {
-      if (this.animationId) cancelAnimationFrame(this.animationId);
+      this.stop();
     }
   }
 
