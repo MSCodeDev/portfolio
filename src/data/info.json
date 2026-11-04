@@ -6,10 +6,13 @@
     "role": "full-stack software engineer",
     "bio": "{role} with over a decade of experience building and running web platforms. Won MTN App of the Year for the ACGL esports platform, and led projects with brands such as Toyota and Curro. Focused on user experience, reliability and the infrastructure behind it all.",
     "meta": {
-        "title": "Mitch Stroebel",
+        "title": "Mitch Stroebel | Full-Stack Software Engineer in South Africa",
         "description": "Mitch Stroebel is a full-stack software engineer with over a decade of experience. Available for freelance web development, design and hosting through MSCode.",
         "ogSiteName": "MSCode",
-        "ogImage": "/meta.png"
+        "ogImage": "/meta.png",
+        "ogImageAlt": "The MSCode logo on a dark background with topographic contour lines",
+        "locale": "en_ZA",
+        "themeColor": "#101010"
     },
     "copyright": {
         "holder": "MSCode",

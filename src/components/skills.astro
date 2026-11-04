@@ -4,9 +4,9 @@ import { services as skills } from "@/data/skills.json";
 ---
 
 <div class="text-left">
-  <h3 class="text-[var(--white)] text-3xl md:text-4xl font-semibold md:mb-6">
+  <h2 class="text-[var(--white)] text-3xl md:text-4xl font-semibold md:mb-6">
     What I do
-  </h3>
+  </h2>
   <ul class="space-y-4 mt-4 text-lg">
     {skills.map(({ title: category, icon, items }) => (
       <li class="w-full">
@@ -32,10 +32,10 @@ import { services as skills } from "@/data/skills.json";
           <div class="skills-content transition-all duration-300 px-4 max-h-0 opacity-0">
             <ul class="space-y-2 text-[var(--white-icon)] text-sm pb-4">
               {items.map((item) => (
-                <div class="flex items-center">
-                  <span class="pl-1">•</span>
-                  <li class="pl-3">{item}</li>
-                </div>
+                <li class="flex items-center">
+                  <span class="pl-1" aria-hidden="true">•</span>
+                  <span class="pl-3">{item}</span>
+                </li>
               ))}
             </ul>
           </div>

@@ -27,7 +27,8 @@ const latestProjects = projects
 
 ---
 
-<Layout title={info.meta.title}>
+<Layout title={info.meta.title} ogType="profile">
+<main>
   <!-- Home -->
   <section class="text-[var(--white)]" id="home">
     <div class="max-w-5xl mx-auto space-y-8 mt-8 md:mt-36 pb-12">
@@ -95,11 +96,12 @@ const latestProjects = projects
     class="text-[var(--white)] pt-12"
   >
     <div class="max-w-5xl mx-auto">
-      <h2 class="text-lg text-[var(--sec)] mb-2 shiny-sec">{info.sections.projects.label}</h2>
+      <p class="text-lg text-[var(--sec)] mb-2 shiny-sec">{info.sections.projects.label}</p>
       <div class="flex items-center justify-between mb-8">
-        <h3 class="text-4xl md:text-5xl font-medium">{info.sections.projects.title}</h3>
+        <h2 class="text-4xl md:text-5xl font-medium">{info.sections.projects.title}</h2>
         <a 
-          href="/projects"
+          href="/projects/"
+          aria-label={`${info.sections.projects.viewAllText} ${info.sections.projects.title.toLowerCase()}`}
           class="inline-flex items-center gap-2 px-3 md:px-6 py-3 bg-[var(--white-icon-tr)] text-[var(--white)] rounded-lg font-semibold border border-[var(--white-icon-tr)] hover:bg-[var(--sec)] hover:border-[var(--sec)] hover:text-[var(--background)] transition-all"
         >
           <Icon name="heroicons:arrow-top-right-on-square-20-solid" class="w-5 h-5" />
@@ -112,9 +114,9 @@ const latestProjects = projects
           <div class="tilt-card bg-[#1414149c] border border-[var(--white-icon-tr)] rounded-lg overflow-hidden flex flex-col">
             <div class="p-6 flex flex-col flex-1">
               <div class="flex items-start justify-between gap-3 mb-2">
-                <h4 class="text-xl font-semibold text-[var(--white)]">
+                <h3 class="text-xl font-semibold text-[var(--white)]">
                   {project.title}
-                </h4>
+                </h3>
                 <span class={`shrink-0 text-xs px-2.5 py-1 border rounded-full ${statusColor(project.status)}`}>
                   {project.status}
                 </span>
@@ -137,27 +139,32 @@ const latestProjects = projects
   </section>
 
   <section class="video-fade relative flex items-center justify-center overflow-hidden bg-black mix-blend-lighten h-[650px] md:h-[800px] -mt-[250px] -mb-[300px] -z-10">
+    <!-- Decorative, so it stays out of the accessibility tree and only loads once it is near the viewport -->
     <video
-      autoplay
+      data-lazy-video
       loop
       muted
       playsinline
+      preload="none"
+      aria-hidden="true"
+      tabindex="-1"
       class="absolute top-0 left-0 w-full h-full object-contain mix-blend-screen"
     >
-      <source src="/blackhole.webm" type="video/webm" />
+      <source data-src="/blackhole.webm" type="video/webm" />
     </video>
   </section>
 
   <!-- Resume -->
   <section id="resume" class="w-full py-12">
     <div class="max-w-5xl mx-auto">
-      <h2 class="text-lg text-[var(--sec)] mb-2 shiny-sec">{info.sections.resume.label}</h2>
+      <p class="text-lg text-[var(--sec)] mb-2 shiny-sec">{info.sections.resume.label}</p>
       <div class="flex items-center justify-between mb-8">
-        <h3 class="text-3xl font-medium text-[var(--white)]">
+        <h2 class="text-3xl font-medium text-[var(--white)]">
           {info.sections.resume.title}
-        </h3>
+        </h2>
         <a 
-          href="/resume"
+          href="/resume/"
+          aria-label={info.sections.resume.viewAllText}
           class="inline-flex items-center gap-2 px-3 md:px-6 py-3 bg-[var(--white-icon-tr)] text-[var(--white)] rounded-lg font-semibold border border-[var(--white-icon-tr)] hover:bg-[var(--sec)] hover:border-[var(--sec)] hover:text-[var(--background)] transition-all"
         >
           <Icon name="heroicons:arrow-top-right-on-square-20-solid" class="w-5 h-5" />
@@ -182,9 +189,9 @@ const latestProjects = projects
                 <div class="flex-1 min-w-0">
                   <div class="flex items-center justify-between gap-2 flex-wrap">
                     <div class="flex items-center gap-2 flex-wrap">
-                      <h4 class="text-lg font-semibold text-[var(--white)]">
+                      <h3 class="text-lg font-semibold text-[var(--white)]">
                         {item.title}
-                      </h4>
+                      </h3>
                       {item.type === "award" && (
                         <span class="text-[0.65rem] px-1.5 py-0.5 rounded-sm bg-amber-400/15 text-amber-400 uppercase tracking-wider">Award</span>
                       )}
@@ -211,8 +218,8 @@ const latestProjects = projects
   <!-- Freelance -->
   <section id="freelance" class="w-full py-12 text-[var(--white)]">
     <div class="max-w-5xl mx-auto">
-      <h2 class="text-lg text-[var(--sec)] mb-2 shiny-sec">{info.freelance.label}</h2>
-      <h3 class="text-3xl font-medium mb-8">{info.freelance.title}</h3>
+      <p class="text-lg text-[var(--sec)] mb-2 shiny-sec">{info.freelance.label}</p>
+      <h2 class="text-3xl font-medium mb-8">{info.freelance.title}</h2>
 
       <div class="tilt-card bg-[#1414149c] border border-[var(--white-icon-tr)] rounded-xl p-6">
         <p class="text-[var(--white-icon)] text-sm md:text-base mb-4">
@@ -234,7 +241,7 @@ const latestProjects = projects
             <span>{info.freelance.ctaText}</span>
           </a>
           <a
-            href="/terms"
+            href="/terms/"
             class="text-sm text-[var(--white-icon)] hover:text-[var(--white)] transition duration-300 ease-in-out underline underline-offset-4"
           >
             {info.freelance.termsText}
@@ -243,6 +250,8 @@ const latestProjects = projects
       </div>
     </div>
   </section>
+
+</main>
 
 </Layout>
 
@@ -302,3 +311,33 @@ const latestProjects = projects
     );
   }
 </style>
+
+<script>
+  // Load and play the decorative video only when it is about to scroll into view
+  document.addEventListener("astro:page-load", () => {
+    const video = document.querySelector<HTMLVideoElement>("video[data-lazy-video]");
+    if (!video || video.dataset.ready) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    const start = () => {
+      video.dataset.ready = "true";
+      video.querySelectorAll<HTMLSourceElement>("source[data-src]").forEach((source) => {
+        source.src = source.dataset.src ?? "";
+      });
+      video.load();
+      video.play().catch(() => {});
+    };
+
+    if (!("IntersectionObserver" in window)) return start();
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          observer.disconnect();
+          start();
+        }
+      },
+      { rootMargin: "400px 0px" }
+    );
+    observer.observe(video);
+  });
+</script>

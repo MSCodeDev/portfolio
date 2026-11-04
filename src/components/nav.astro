@@ -17,12 +17,12 @@ const navItems: NavItem[] = [
   },
   {
     label: "Projects",
-    href: "/projects",
+    href: "/projects/",
     icon: "heroicons:folder-20-solid",
   },
   {
     label: "Resume",
-    href: "/resume",
+    href: "/resume/",
     icon: "heroicons:document-text-20-solid",
   },
 ];
@@ -49,8 +49,8 @@ const navItems: NavItem[] = [
                   {
                     "active":
                       (item.href === "/" && currentPath === "/") ||
-                      (item.href === "/projects" && (currentPath === "/projects" || currentPath.startsWith("/projects/"))) ||
-                      (item.href === "/resume" && (currentPath === "/resume" || currentPath.startsWith("/resume/")))
+                      (item.href === "/projects/" && currentPath.startsWith("/projects")) ||
+                      (item.href === "/resume/" && currentPath.startsWith("/resume"))
                   }
                 ]}
               >

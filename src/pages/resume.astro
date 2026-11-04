@@ -13,7 +13,10 @@ const badgeColors: Record<string, string> = {
 const hasItems = (entry: { items?: string[] }) => (entry.items?.length ?? 0) > 0;
 ---
 
-<Layout description="Mitch Stroebel's resume: work experience, skills, education and awards.">
+<Layout
+  title="Resume | Mitch Stroebel"
+  description="Mitch Stroebel's resume: work experience, skills, education and awards."
+>
   <main class="max-w-5xl mx-auto space-y-8 md:mt-36 my-8">
   <div class="mb-12 flex flex-col md:flex-row md:items-start md:justify-between gap-6">
       <div>
@@ -34,7 +37,7 @@ const hasItems = (entry: { items?: string[] }) => (entry.items?.length ?? 0) > 0
     </div>
     <!-- Combined Timeline Section -->
     <section id="timeline">
-      
+      <h2 class="sr-only">Experience, education and awards</h2>
       <div class="timeline-line relative pl-10 ml-3">
         {timeline.map((item, i) => (
           <div class={`relative ${i < timeline.length - 1 ? 'mb-8' : ''}`}>
