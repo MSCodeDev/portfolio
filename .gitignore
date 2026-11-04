@@ -22,3 +22,8 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+.references/
+
+# private contact data used by the resume generator
+src/data/private.json
