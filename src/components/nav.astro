@@ -21,6 +21,11 @@ const navItems: NavItem[] = [
     icon: "heroicons:folder-20-solid",
   },
   {
+    label: "Blog",
+    href: "/blog/",
+    icon: "heroicons:newspaper-20-solid",
+  },
+  {
     label: "Resume",
     href: "/resume/",
     icon: "heroicons:document-text-20-solid",
@@ -50,6 +55,7 @@ const navItems: NavItem[] = [
                     "active":
                       (item.href === "/" && currentPath === "/") ||
                       (item.href === "/projects/" && currentPath.startsWith("/projects")) ||
+                      (item.href === "/blog/" && currentPath.startsWith("/blog")) ||
                       (item.href === "/resume/" && currentPath.startsWith("/resume"))
                   }
                 ]}
@@ -130,10 +136,7 @@ const navItems: NavItem[] = [
     const navLinks = nav?.querySelectorAll("a[href]");
     navLinks?.forEach((link) => {
       const href = link.getAttribute("href") || "";
-      const isActive =
-        (href === "/" && path === "/") ||
-        (href === "/projects" && (path === "/projects" || path.startsWith("/projects/"))) ||
-        (href === "/resume" && (path === "/resume" || path.startsWith("/resume/")));
+      const isActive = href === "/" ? path === "/" : href !== "" && path.startsWith(href);
       link.classList.toggle("active", isActive);
     });
   }
