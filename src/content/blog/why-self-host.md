@@ -4,6 +4,7 @@ description: "The case for self-hosting, for developers specifically: a sandbox 
 pubDate: 2026-11-16
 tags: ["self-hosting", "homelab"]
 heroImage: "./images/why-self-host.png"
+heroImageAlt: "Pixel-art illustration of a developer panicking in front of a smoking server rack showing kernel panic errors, captioned 'The prod you are encouraged to break'"
 ---
 Self-hosting gets pitched, most often, as a privacy move: run your own Nextcloud instead of handing photos to Google, run your own Bitwarden instead of trusting a third party with your passwords. That's a legitimate reason to do it. It's also not the reason a software developer, specifically, should care — plenty of people who will never read a Dockerfile have perfectly good privacy reasons to self-host. The case for developers is narrower and more self-interested: it's one of the only places left where you get to run real, production-shaped infrastructure and be the only person who suffers when you get it wrong.
 

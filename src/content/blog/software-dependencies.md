@@ -4,6 +4,7 @@ description: "Dependency trees have gotten too big for anyone to review by hand.
 pubDate: 2026-11-17
 tags: ["security", "tooling"]
 heroImage: "./images/software-dependencies.png"
+heroImageAlt: "Pixel-art illustration of a sprawling tree made of npm package names like react, lodash and webpack, captioned 'TL;DR your dependency tree'"
 ---
 Run `npm ls --all` on almost any real-world JavaScript project and watch the terminal scroll for a while. That's not a bug. That's the actual shape of the thing you shipped. [An InfoWorld piece making the rounds this month](https://www.infoworld.com/article/4225043/software-dependencies-are-running-away-from-us.html) puts it plainly: nobody actually reviews the whole dependency graph anymore, because nobody possibly can.
 

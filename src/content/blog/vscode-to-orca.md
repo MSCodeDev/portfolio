@@ -4,6 +4,7 @@ description: "Why switching from VSCode to an agent-first dev environment after 
 pubDate: 2026-11-15
 tags: ["tooling", "ai"]
 heroImage: "./images/vscode-to-orca.png"
+heroImageAlt: "Pixel-art illustration of a robot being crowned king on a throne by two other robots, captioned 'The IDE is dead, long live the ADE'"
 ---
 
 I didn't want to let it die. Most "I finally left my editor" posts pretend the author walked in open-minded and let the best tool win on merit. That's not what happened here. VSCode wasn't losing some ongoing evaluation — it had been "home" for so long that trying something else felt like relearning to type.

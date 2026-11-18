@@ -1,7 +1,7 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import { getCollection, render } from "astro:content";
-import { Image } from "astro:assets";
+import { Image, getImage } from "astro:assets";
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog", ({ data }) => !data.draft);
@@ -18,9 +18,36 @@ const dateFormat = new Intl.DateTimeFormat("en-ZA", { year: "numeric", month: "l
 
 const wordCount = post.body?.split(/\s+/).filter(Boolean).length ?? 0;
 const readingTime = Math.max(1, Math.round(wordCount / 200));
+
+const heroAlt = post.data.heroImageAlt ?? post.data.title;
+
+// Use the post's own hero image as the social-share preview, falling back to the site default
+let shareImage;
+if (post.data.heroImage) {
+  const optimized = await getImage({ src: post.data.heroImage, width: 1200, height: 1200, format: "jpg" });
+  shareImage = {
+    url: new URL(optimized.src, Astro.site).href,
+    width: optimized.attributes.width,
+    height: optimized.attributes.height,
+    alt: heroAlt,
+  };
+}
 ---
 
-<Layout title={`${post.data.title} | Mitch Stroebel`} description={post.data.description} ogType="website">
+<Layout
+  title={`${post.data.title} | Mitch Stroebel`}
+  description={post.data.description}
+  ogType="article"
+  image={shareImage}
+  feedUrl="/rss.xml"
+  article={{
+    headline: post.data.title,
+    publishedTime: post.data.pubDate,
+    modifiedTime: post.data.updatedDate,
+    tags: post.data.tags,
+    author: post.data.author,
+  }}
+>
   <main class="max-w-3xl mx-auto md:mt-36 my-8">
     <a
       href="/blog/"
@@ -32,7 +59,7 @@ const readingTime = Math.max(1, Math.round(wordCount / 200));
     {post.data.heroImage && (
       <Image
         src={post.data.heroImage}
-        alt={post.data.title}
+        alt={heroAlt}
         width={800}
         height={800}
         format="webp"
